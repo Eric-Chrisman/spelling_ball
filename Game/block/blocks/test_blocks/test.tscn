@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://x8l18erpkisc"]
+
+[ext_resource type="Script" uid="uid://btqrdt4571mdg" path="res://Game/block/blocks/test_blocks/test.gd" id="1_v7abu"]
+[ext_resource type="PackedScene" uid="uid://bbsc7oe6oly5m" path="res://Game/block/blocks/test_blocks/test_block.tscn" id="2_dkhs4"]
+[ext_resource type="PackedScene" uid="uid://pk48k5go8tmy" path="res://Game/block/blocks/test_blocks/test_block_start.tscn" id="3_7fjvr"]
+[ext_resource type="Texture2D" uid="uid://bkb0iouc2j10b" path="res://Assets/Textures/placeholder/grassball.png" id="4_dkhs4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fjvr"]
+shading_mode = 0
+albedo_texture = ExtResource("4_dkhs4")
+uv1_scale = Vector3(14.76, 14.76, 14.76)
+uv1_triplanar = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_ibmjg"]
+material = SubResource("StandardMaterial3D_7fjvr")
+
+[node name="Test" type="Node3D" node_paths=PackedStringArray("block1", "block2")]
+script = ExtResource("1_v7abu")
+block1 = NodePath("TestBlock")
+block2 = NodePath("TestBlockStart")
+
+[node name="TestBlock" parent="." instance=ExtResource("2_dkhs4")]
+
+[node name="TestBlockStart" parent="." instance=ExtResource("3_7fjvr")]
+transform = Transform3D(0.338886, 0, -0.940828, 0, 1, 0, 0.940828, 0, 0.338886, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.98094e-07, -1, 0, 4.53187, -4.37114e-08, 0, 1.53448, 0)
+mesh = SubResource("PrismMesh_ibmjg")

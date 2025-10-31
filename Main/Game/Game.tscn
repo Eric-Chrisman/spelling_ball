@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://bupjwud3hy3v7"]
+
+[ext_resource type="PackedScene" uid="uid://bpepefianf62a" path="res://Game/ultity/rail_system/rail_system.tscn" id="1_b8vfe"]
+[ext_resource type="Script" uid="uid://dxhfs1f0kgn20" path="res://Main/Game/game.gd" id="1_spt6k"]
+[ext_resource type="PackedScene" uid="uid://br4vaypw87pj2" path="res://Game/ultity/path/path.tscn" id="3_spt6k"]
+[ext_resource type="Texture2D" uid="uid://dys8u2bvfgtw7" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Wood/Wood_02-256x256.png" id="4_2kjoi"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dpgtf"]
+panorama = ExtResource("4_2kjoi")
+
+[sub_resource type="Sky" id="Sky_qodx8"]
+sky_material = SubResource("PanoramaSkyMaterial_dpgtf")
+
+[sub_resource type="Environment" id="Environment_ovdhp"]
+background_mode = 2
+sky = SubResource("Sky_qodx8")
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_spt6k")
+
+[node name="Rail_System" parent="." node_paths=PackedStringArray("path") instance=ExtResource("1_b8vfe")]
+path = NodePath("../path")
+speed = 9.685
+
+[node name="path" parent="." instance=ExtResource("3_spt6k")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ovdhp")

@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcdo2lfs4ygdd"]
+
+[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game/player/ball/ball.tscn" id="2_ks2a7"]
+
+[sub_resource type="GDScript" id="GDScript_3impb"]
+script/source = "extends Path3D
+
+@export_range(3,100) var amount:int = 10
+@export var path_follow:PathFollow3D
+
+@onready var block = preload(\"res://Game/blocks/base.tscn\")
+var blocks:Array[BALSE] = []
+
+var running_total = 0
+
+var speed:float = 4
+
+func _ready() -> void:
+	for i in range(amount):
+		_add_block()
+	curve = blocks[1].path.curve
+
+func _process(delta: float) -> void:
+	path_follow.progress += speed * delta
+
+	# Check if we've looped
+	if path_follow.progress_ratio >= 1.0:
+		_add_block()
+
+		# Save all child transforms
+		var saved_transforms: Array = []
+		for child in path_follow.get_children():
+			if child is Node3D:
+				saved_transforms.append(child.global_transform)
+
+		# Reset path follow
+		curve = blocks[1].path.curve
+		path_follow.progress_ratio = 0.0
+
+		# Restore child transforms
+		for i in range(saved_transforms.size()):
+			path_follow.get_child(i).global_transform = saved_transforms[i]
+
+func _add_block():
+	_create_block()
+
+func _create_block():
+	var temp: BALSE = block.instantiate()
+	path_follow.add_child(temp)
+	if blocks.size() > 0:
+		temp.global_position = blocks[-1].tail.global_position + temp.head.position
+	blocks.append(temp)
+	temp.set_color(running_total % 2)
+	running_total+=1
+	if blocks.size() > amount:
+		temp = blocks[0]
+		temp.queue_free()
+		path_follow.remove_child(temp)
+		blocks.pop_at(0)
+		
+"
+
+[node name="Path3D" type="Path3D" node_paths=PackedStringArray("path_follow")]
+script = SubResource("GDScript_3impb")
+path_follow = NodePath("PathFollow3D")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+rotation_mode = 0
+use_model_front = true
+loop = false
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_ks2a7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0189161, 1, 0)
+script = null
+
+[node name="Camera3D2" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(-4.2222e-08, 0.258819, -0.965926, 1.13133e-08, 0.965926, 0.258819, 1, 8.88178e-16, -4.37114e-08, -2.50064, 0.895203, 0)

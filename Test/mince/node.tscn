@@ -1,0 +1,80 @@
+[gd_scene load_steps=16 format=3 uid="uid://cev4c0mxwhlub"]
+
+[ext_resource type="Shader" uid="uid://bmjsnqgtgunxt" path="res://Test/mince/node.tres" id="1_e2u21"]
+[ext_resource type="Script" uid="uid://cwm6igltvjepd" path="res://Test/mince/mesh_instance_3d_2.gd" id="3_bss38"]
+[ext_resource type="Texture2D" uid="uid://bw4s52l8okbxv" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_21-256x256.png" id="4_bss38"]
+[ext_resource type="Texture2D" uid="uid://fbsb3l757mjr" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Grass/Grass_01-256x256.png" id="5_bss38"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tda05"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(1.08325, 1.08325, 1.08325, 1)
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_horizon_color = Color(1.08325, 1.08325, 1.08325, 1)
+energy_multiplier = 8.0
+
+[sub_resource type="Sky" id="Sky_qn3nj"]
+sky_material = SubResource("ProceduralSkyMaterial_tda05")
+
+[sub_resource type="Environment" id="Environment_l6pdb"]
+sky = SubResource("Sky_qn3nj")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r657h"]
+render_priority = 0
+shader = ExtResource("1_e2u21")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qn3nj"]
+size = Vector2(500, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6pdb"]
+uv1_scale = Vector3(60, 60, 60)
+
+[sub_resource type="SphereMesh" id="SphereMesh_r657h"]
+radial_segments = 14
+rings = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0urt"]
+albedo_texture = ExtResource("4_bss38")
+
+[sub_resource type="BoxMesh" id="BoxMesh_jfkdj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tda05"]
+albedo_texture = ExtResource("5_bss38")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qn3nj"]
+size = Vector3(1.2, 0.2, 1.2)
+
+[node name="Node" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l6pdb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.700892, 0)
+material_override = SubResource("ShaderMaterial_r657h")
+mesh = SubResource("PlaneMesh_qn3nj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.660261, 0, -0.774867, 0, 1, 0, 0.774867, 0, -0.660261, 0, -0.340667, 0)
+material_override = SubResource("StandardMaterial3D_l6pdb")
+mesh = SubResource("SphereMesh_r657h")
+script = ExtResource("3_bss38")
+value = 3.8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D2"]
+material_override = SubResource("StandardMaterial3D_f0urt")
+mesh = SubResource("BoxMesh_jfkdj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.413505, 0)
+material_override = SubResource("StandardMaterial3D_tda05")
+mesh = SubResource("BoxMesh_qn3nj")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.239818, 1.47899)
+fov = 62.4592

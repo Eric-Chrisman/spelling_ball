@@ -1,0 +1,107 @@
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://brcd6o7isnxvl"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_il48d"]
+expanded_output_ports = [0]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_wes0b"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(50, 50)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_il48d"]
+default_input_values = [0, 0.0, 1, 0.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(100, 0, 0)]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_wes0b"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_il48d"]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_wes0b"]
+output_port_for_preview = 0
+function = 1
+
+[sub_resource type="VisualShaderNodeMultiplyAdd" id="VisualShaderNodeMultiplyAdd_ctw4d"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 100.0, 2, 0.0]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+
+void vertex() {
+// Input:2
+	vec2 n_out2p0 = VERTEX;
+	float n_out2p2 = n_out2p0.g;
+
+
+// Input:5
+	float n_out5p0 = TIME;
+
+
+// FloatFunc:7
+	float n_out7p0 = cos(n_out5p0);
+
+
+// MultiplyAdd:8
+	float n_in8p1 = 100.00000;
+	float n_in8p2 = 0.00000;
+	float n_out8p0 = (n_out7p0 * n_in8p1) + n_in8p2;
+
+
+// VectorCompose:6
+	float n_in6p1 = 0.00000;
+	float n_in6p2 = 0.00000;
+	vec3 n_out6p0 = vec3(n_out8p0, n_in6p1, n_in6p2);
+
+
+	vec3 n_out4p0;
+// If:4
+	float n_in4p1 = 0.00000;
+	float n_in4p2 = 0.00001;
+	vec3 n_in4p3 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_in4p4 = vec3(0.00000, 0.00000, 0.00000);
+	if(abs(n_out2p2 - n_in4p1) < n_in4p2)
+	{
+		n_out4p0 = n_in4p3;
+	}
+	else if(n_out2p2 < n_in4p1)
+	{
+		n_out4p0 = n_out6p0;
+	}
+	else
+	{
+		n_out4p0 = n_in4p4;
+	}
+
+
+// VectorOp:3
+	vec2 n_out3p0 = n_out2p0 + vec2(n_out4p0.xy);
+
+
+// Output:0
+	VERTEX = n_out3p0;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_il48d")
+nodes/vertex/2/position = Vector2(-480, 180)
+nodes/vertex/3/node = SubResource("VisualShaderNodeVectorOp_wes0b")
+nodes/vertex/3/position = Vector2(0, 180)
+nodes/vertex/4/node = SubResource("VisualShaderNodeIf_il48d")
+nodes/vertex/4/position = Vector2(-220, 380)
+nodes/vertex/5/node = SubResource("VisualShaderNodeInput_wes0b")
+nodes/vertex/5/position = Vector2(-1260, 720)
+nodes/vertex/6/node = SubResource("VisualShaderNodeVectorCompose_il48d")
+nodes/vertex/6/position = Vector2(-480, 460)
+nodes/vertex/7/node = SubResource("VisualShaderNodeFloatFunc_wes0b")
+nodes/vertex/7/position = Vector2(-940, 680)
+nodes/vertex/8/node = SubResource("VisualShaderNodeMultiplyAdd_ctw4d")
+nodes/vertex/8/position = Vector2(-700, 640)
+nodes/vertex/connections = PackedInt32Array(2, 0, 3, 0, 3, 0, 0, 0, 2, 2, 4, 0, 4, 0, 3, 1, 6, 0, 4, 5, 5, 0, 7, 0, 7, 0, 8, 0, 8, 0, 6, 0)

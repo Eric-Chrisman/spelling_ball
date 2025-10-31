@@ -1,0 +1,102 @@
+[gd_scene load_steps=21 format=3 uid="uid://c1etyg3bn50ku"]
+
+[ext_resource type="Shader" uid="uid://brcd6o7isnxvl" path="res://Test/2d_shader_slop/new_shader.tres" id="1_7wydt"]
+[ext_resource type="Texture2D" uid="uid://pt75sb65knhk" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_01-256x256.png" id="1_v4r2h"]
+[ext_resource type="Shader" uid="uid://d3emyxrkb1rxj" path="res://Test/2d_shader_slop/node_2d.gdshader" id="3_eyheo"]
+[ext_resource type="Script" uid="uid://b8mpcn02mluiw" path="res://Test/2d_shader_slop/camera_2d.gd" id="3_j8qjt"]
+[ext_resource type="Texture2D" uid="uid://rb65rax1u2t7" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Wood/Wood_23-256x256.png" id="4_ftnvp"]
+[ext_resource type="Shader" uid="uid://je2y5g2gcixu" path="res://Test/2d_shader_slop/color_replacer.gdshader" id="5_iddwj"]
+[ext_resource type="Texture2D" uid="uid://ddggry27ccu2h" path="res://Assets/Textures/test_stuff/random/pngtree-the-outline-of-a-person-solid-color-black-standing-straight-facing-png-image_15775306.png" id="6_q0cwi"]
+[ext_resource type="Texture2D" uid="uid://ci4qvi36t2fk3" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_06-256x256.png" id="7_l38rp"]
+[ext_resource type="Texture2D" uid="uid://cas4jfgrtreel" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_05-256x256.png" id="7_q0cwi"]
+[ext_resource type="Shader" uid="uid://xukpjebsds52" path="res://Test/2d_shader_slop/asfd.gdshader" id="7_s2okx"]
+[ext_resource type="Shader" uid="uid://mrnrqiuwfax1" path="res://Test/2d_shader_slop/arffawfaw.gdshader" id="8_ea02g"]
+[ext_resource type="Shader" uid="uid://b4s3nxv5w8xy7" path="res://Test/2d_shader_slop/asdffffffffffffffffff.gdshader" id="10_d8ygx"]
+[ext_resource type="Texture2D" uid="uid://b8ve8b18h10q2" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Roofs/Roofs_10-256x256.png" id="11_s2okx"]
+[ext_resource type="Texture2D" uid="uid://bllbmp6q34ts" path="res://Assets/Textures/test_stuff/random/Screenshot 2025-09-03 074520.png" id="13_ptg8e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7wydt"]
+shader = ExtResource("1_7wydt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iddwj"]
+shader = ExtResource("3_eyheo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfvml"]
+shader = ExtResource("5_iddwj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j8qjt"]
+shader = ExtResource("7_s2okx")
+shader_parameter/strength = 13.555
+shader_parameter/dynamics = 4.915
+shader_parameter/speed = 39.16
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s2okx"]
+shader = ExtResource("8_ea02g")
+shader_parameter/strength = -0.02
+shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptg8e"]
+shader = ExtResource("10_d8ygx")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7wydt")
+texture = ExtResource("1_v4r2h")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_j8qjt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_iddwj")
+position = Vector2(462, 0)
+texture = ExtResource("4_ftnvp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lfvml")
+position = Vector2(-384, 0)
+scale = Vector2(0.0969498, 0.0969498)
+texture = ExtResource("6_q0cwi")
+
+[node name="ColorPicker" type="ColorPicker" parent="Sprite2D3"]
+offset_left = -0.000671387
+offset_top = -608.562
+offset_right = 297.999
+offset_bottom = -36.5621
+color = Color(0, 0, 0, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_j8qjt")
+position = Vector2(1344, 48)
+texture = ExtResource("7_l38rp")
+polygon = PackedVector2Array(-46, -63, -22, -63, 2, -63, 26, -63, 50, -63, 74, -63, 98, -63, 98, 1, 74, 1, 50, 1, 26, 1, 2, 1, -22, 1, -46, 1)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_s2okx")
+position = Vector2(832, 4)
+texture = ExtResource("7_q0cwi")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_s2okx")
+position = Vector2(1087, 4)
+texture = ExtResource("7_q0cwi")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ptg8e")
+position = Vector2(-323, 532)
+texture = ExtResource("11_s2okx")
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_j8qjt")
+position = Vector2(-856, -96)
+texture = ExtResource("13_ptg8e")
+polygon = PackedVector2Array(98.049, -42.3674, 17.0235, -15.3589, -36.9935, 38.6582, -36.9935, 119.684, 17.0235, 173.701, 98.049, 227.718, 179.075, 173.701, 233.092, 119.684, 233.092, 38.6582, 179.075, -15.3589)

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci6mm68c5akr7"]
+
+[ext_resource type="Script" uid="uid://c37wshvn8mj4i" path="res://Test/global_transform/global_transform.gd" id="1_mahi8"]
+[ext_resource type="Texture2D" uid="uid://pt75sb65knhk" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_01-256x256.png" id="2_s3hfl"]
+[ext_resource type="Script" uid="uid://kq15bo23ekmt" path="res://Test/global_transform/move_forever.gd" id="3_qpfoe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmxhx"]
+shading_mode = 0
+albedo_texture = ExtResource("2_s3hfl")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_04mjb"]
+material = SubResource("StandardMaterial3D_pmxhx")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("1_mahi8")
+camera = NodePath("MeshInstance3D/Camera3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.965926, -1.13133e-08, -0.258819, 1.13133e-08, 1, -1.48943e-09, 0.258819, -1.48943e-09, 0.965926, 12.9224, 0, 0)
+mesh = SubResource("BoxMesh_04mjb")
+script = ExtResource("3_qpfoe")
+speed = 1000.0
+
+[node name="Camera3D" type="Camera3D" parent="Node3D/MeshInstance3D"]
+transform = Transform3D(0.825396, -0.17259, 0.537526, 0.000716976, 0.952444, 0.304713, -0.564554, -0.251123, 0.786267, 0.718042, 0.906298, 1.58781)
+fov = 85.677

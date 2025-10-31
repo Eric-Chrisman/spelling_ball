@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://chrsgmpuvkbd8"]
+
+[ext_resource type="PackedScene" uid="uid://d350iuy8inuax" path="res://Game/ultity/llaso/llaso.tscn" id="1_dkdqb"]
+[ext_resource type="PackedScene" uid="uid://br4vaypw87pj2" path="res://Game/ultity/path/path.tscn" id="2_dmsfr"]
+[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game/player/ball/ball.tscn" id="3_dkdqb"]
+
+[node name="PathTest" type="Node3D"]
+
+[node name="llaso" parent="." instance=ExtResource("1_dkdqb")]
+
+[node name="path" parent="llaso" instance=ExtResource("2_dmsfr")]
+
+[node name="CharacterBody3D2" parent="llaso" instance=ExtResource("3_dkdqb")]
+script = null

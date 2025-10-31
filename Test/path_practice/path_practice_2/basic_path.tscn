@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcxkxrl4rf51"]
+
+[ext_resource type="Texture2D" uid="uid://pt75sb65knhk" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_01-256x256.png" id="1_yo0ho"]
+[ext_resource type="Texture2D" uid="uid://dknahgh8le7i3" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_02-256x256.png" id="2_l8e6o"]
+[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game/player/ball/ball.tscn" id="3_l8e6o"]
+[ext_resource type="Script" uid="uid://ccesymnuynyt3" path="res://Test/path_practice/path_practice_2/test.gd" id="4_x14se"]
+
+[sub_resource type="Curve3D" id="Curve3D_2q6kx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 18.0946, 0, 0, 0, 0, 0, 0, 0, 0, 9.05435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 3)
+}
+point_count = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x14se"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yg26s"]
+width = 6432
+noise = SubResource("FastNoiseLite_x14se")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nq332"]
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+albedo_texture = ExtResource("1_yo0ho")
+detail_mask = SubResource("NoiseTexture2D_yg26s")
+detail_albedo = ExtResource("2_l8e6o")
+uv1_scale = Vector3(0.98, 0.98, 0.98)
+uv1_triplanar = true
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_e5t6e"]
+material = SubResource("StandardMaterial3D_nq332")
+size = Vector3(9, 1, 5)
+
+[node name="BasicPath" type="Node3D"]
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_2q6kx")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0, 0, 0.999997, 0, 0.999975, 0, -0.999959, 0, 0, 14.0197, 0, 0)
+progress = 4.0749
+rotation_mode = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(-0.000143219, -3.00921e-09, 1.00004, -0.0647235, 0.997932, -9.26631e-06, -0.99793, -0.0647236, -0.000142918, 0.0777416, -0.551905, -13.537)
+mesh = SubResource("BoxMesh_e5t6e")
+skeleton = NodePath("../../..")
+
+[node name="Node3D" type="Node3D" parent="Path3D/PathFollow3D/MeshInstance3D"]
+transform = Transform3D(1, 4.30755e-13, 2.91038e-11, 4.31254e-13, 1, 8.12683e-14, 0, 1.74927e-12, 1, 4.52936, 0.293763, -0.0734572)
+
+[node name="Node3D2" type="Node3D" parent="Path3D/PathFollow3D/MeshInstance3D"]
+transform = Transform3D(1, 4.29553e-13, 2.91038e-11, 4.31124e-13, 1, 7.92699e-14, 0, 1.10523e-11, 1, -13.5511, 0.510118, -0.0945734)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(0.000950554, -0.544653, 0.8387, -0.0647886, 0.836899, 0.543566, -0.997925, -0.0548531, -0.0344912, 0.0790365, 0.00860796, -4.50367)
+mesh = SubResource("BoxMesh_e5t6e")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Path3D/PathFollow3D" node_paths=PackedStringArray("node", "my_node", "line", "path")]
+transform = Transform3D(0.0282744, -0.913302, 0.406396, -0.0312059, 0.405547, 0.913568, -0.999139, -0.0385092, -0.0170324, 0, 0, -18.0947)
+mesh = SubResource("BoxMesh_e5t6e")
+skeleton = NodePath("../../..")
+script = ExtResource("4_x14se")
+node = NodePath("../MeshInstance3D/Node3D2")
+my_node = NodePath("Node3D")
+line = NodePath("../..")
+path = NodePath("..")
+
+[node name="Node3D" type="Node3D" parent="Path3D/PathFollow3D/MeshInstance3D3"]
+transform = Transform3D(1, -3.72529e-09, 3.72529e-09, -3.72529e-09, 1, 0, 0, -2.98023e-08, 1, 4.46976, 0.172284, 0.0762)
+
+[node name="Node3D" parent="." instance=ExtResource("3_l8e6o")]
+transform = Transform3D(0.000143122, -0.0013984, 0.999973, 1.16411e-10, 0.999971, 0.0013984, -0.999964, -2.00031e-07, 0.000143123, -0.0344048, 0.536326, 0.00150643)
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 16.3904, -0.507798, 17.3337)

@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://pk48k5go8tmy"]
+
+[ext_resource type="Script" uid="uid://676poivrmsv6" path="res://Game/block/block.gd" id="1_sywf4"]
+[ext_resource type="Texture2D" uid="uid://5yl3daw5nktg" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_16-256x256.png" id="2_nly5g"]
+[ext_resource type="Texture2D" uid="uid://ckrr42fohmh71" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_11-256x256.png" id="3_q2b46"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iapu7"]
+shading_mode = 0
+albedo_texture = ExtResource("2_nly5g")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s0hi5"]
+material = SubResource("StandardMaterial3D_iapu7")
+top_radius = 3.085
+
+[sub_resource type="Curve3D" id="Curve3D_tp25k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10.3861),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kg82i"]
+shading_mode = 0
+albedo_texture = ExtResource("3_q2b46")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_i84q8"]
+material = SubResource("StandardMaterial3D_kg82i")
+size = Vector3(5, 0.6, 10)
+
+[node name="TestBlockStart" type="Node3D" node_paths=PackedStringArray("start", "end", "path")]
+script = ExtResource("1_sywf4")
+start = NodePath("Start")
+end = NodePath("End")
+path = NodePath("Path3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99, 0)
+mesh = SubResource("CylinderMesh_s0hi5")
+
+[node name="Start" type="Node3D" parent="."]
+
+[node name="End" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.3861)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0106958, 0)
+curve = SubResource("Curve3D_tp25k")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.295, 5.39625)
+mesh = SubResource("BoxMesh_i84q8")

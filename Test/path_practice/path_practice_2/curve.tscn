@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4ii04klibduf"]
+
+[ext_resource type="ArrayMesh" uid="uid://3uixnerf4ymv" path="res://Assets/Models/curve.res" id="1_7wmff"]
+[ext_resource type="Texture2D" uid="uid://tlsv4wsepma7" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Roofs/Roofs_23-256x256.png" id="2_qf27a"]
+
+[sub_resource type="Curve3D" id="Curve3D_d7w8j"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4r7k"]
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+albedo_texture = ExtResource("2_qf27a")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ya2y2"]
+material = SubResource("StandardMaterial3D_q4r7k")
+
+[node name="curve" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 0)
+mesh = ExtResource("1_7wmff")
+
+[node name="Tail" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Head" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.33185, 0, -4.26483)
+
+[node name="Path3D" type="Path3D" parent="."]
+unique_name_in_owner = true
+curve = SubResource("Curve3D_d7w8j")
+
+[node name="Label3D" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 2, 2, 0)
+billboard = 1
+text = "asdfadsfadsf"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+mesh = SubResource("BoxMesh_ya2y2")

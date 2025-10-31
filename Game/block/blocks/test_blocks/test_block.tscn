@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbsc7oe6oly5m"]
+
+[ext_resource type="Script" uid="uid://676poivrmsv6" path="res://Game/block/block.gd" id="1_fupr5"]
+[ext_resource type="Texture2D" uid="uid://ckrr42fohmh71" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_11-256x256.png" id="2_i4lxk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kg82i"]
+shading_mode = 0
+albedo_texture = ExtResource("2_i4lxk")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_qurat"]
+material = SubResource("StandardMaterial3D_kg82i")
+size = Vector3(5, 2, 10)
+
+[sub_resource type="Curve3D" id="Curve3D_d2sp7"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, 0, 0, 5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="TestBlock" type="Node3D" node_paths=PackedStringArray("start", "end", "path")]
+script = ExtResource("1_fupr5")
+start = NodePath("Start")
+end = NodePath("End")
+path = NodePath("Path3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_qurat")
+
+[node name="Start" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="End" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_d2sp7")
