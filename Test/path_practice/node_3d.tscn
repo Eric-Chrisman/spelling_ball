@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://pt75sb65knhk" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_01-256x256.png" id="1_2ushg"]
 [ext_resource type="Texture2D" uid="uid://dknahgh8le7i3" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_02-256x256.png" id="2_6jpoh"]
-[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game/player/ball/ball.tscn" id="3_42ukc"]
-[ext_resource type="PackedScene" uid="uid://2u1mn7agt6ns" path="res://Game/pickup/node_3d.tscn" id="4_cxoy2"]
+[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game_Mechanics/player/ball/ball.tscn" id="3_42ukc"]
+[ext_resource type="PackedScene" uid="uid://2u1mn7agt6ns" path="res://Game_Mechanics/pickup/node_3d.tscn" id="4_cxoy2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_x14se"]
 

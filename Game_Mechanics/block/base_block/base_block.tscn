@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbf0rxh7a0fm0"]
+
+[ext_resource type="Script" uid="uid://676poivrmsv6" path="res://Game_Mechanics/block/block.gd" id="1_h4nbw"]
+
+[node name="BaseBlock" type="Node3D"]
+script = ExtResource("1_h4nbw")
+metadata/_custom_type_script = "uid://676poivrmsv6"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="Path3D" type="Path3D" parent="."]
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.248627, 0, -0.58738)
+loop = false

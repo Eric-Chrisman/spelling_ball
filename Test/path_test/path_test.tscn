@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://chrsgmpuvkbd8"]
 
-[ext_resource type="PackedScene" uid="uid://d350iuy8inuax" path="res://Game/ultity/llaso/llaso.tscn" id="1_dkdqb"]
-[ext_resource type="PackedScene" uid="uid://br4vaypw87pj2" path="res://Game/ultity/path/path.tscn" id="2_dmsfr"]
-[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game/player/ball/ball.tscn" id="3_dkdqb"]
+[ext_resource type="PackedScene" uid="uid://d350iuy8inuax" path="res://Game_Mechanics/ultity/llaso/llaso.tscn" id="1_dkdqb"]
+[ext_resource type="PackedScene" uid="uid://br4vaypw87pj2" path="res://Game_Mechanics/ultity/path/path.tscn" id="2_dmsfr"]
+[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game_Mechanics/player/ball/ball.tscn" id="3_dkdqb"]
 
 [node name="PathTest" type="Node3D"]
 
