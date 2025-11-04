@@ -41,7 +41,7 @@ func increment_block() -> Block:
 	return get_current_block()
 
 func pick_random_path() -> PackedScene:
-	return path_choices[randi_range(0, path_choices.size() - 1)]
+	return path_choices[randi_range(1, path_choices.size() - 1)]
 
 func _add_block(scene: PackedScene = null) -> void:
 	if !scene:
@@ -56,7 +56,7 @@ func _add_block(scene: PackedScene = null) -> void:
 		# Align rotation using the previous block’s ending angle
 		
 		var prev_block: Block = blocks.back()
-		new_block.global_rotation.y = rad_to_deg(prev_block.get_ending_angle())
+		#new_block.global_rotation.y = rad_to_deg(prev_block.get_ending_angle())
 		var prev_end_pos: Vector3 = prev_block.get_global_end_position()
 		var new_start_pos: Vector3 = new_block.get_global_start_position()
 		var delta: Vector3 = prev_end_pos - new_start_pos

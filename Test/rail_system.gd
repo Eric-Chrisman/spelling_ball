@@ -5,13 +5,14 @@ class_name RailSystem
 @export var speed: float = 10.0
 
 @onready var player: Node3D = $Player
+@onready var player_ref: Player = $Player/CharacterBody3D
 var current_block: Block
 var is_playing: bool = false
 
 func start():
 	if is_playing:
 		return
-	
+	player_ref.speed_ball_is_moving = speed
 	is_playing = true
 	current_block = path.get_current_block()
 	current_block.adopt_player(player)

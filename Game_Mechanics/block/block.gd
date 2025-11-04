@@ -18,7 +18,7 @@ func get_global_position_of_point(index: int):
 
 func adopt_player(player: Node3D, overhead: float = 0.0):
 	player.reparent(path_follow)
-	player.position = path.curve.get_point_position(0)
+	#player.position = path.curve.get_point_position(0)
 	path_follow.progress += overhead
 
 func get_ending_angle():
