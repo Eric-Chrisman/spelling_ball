@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://pt75sb65knhk" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_01-256x256.png" id="1_yo0ho"]
 [ext_resource type="Texture2D" uid="uid://dknahgh8le7i3" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_02-256x256.png" id="2_l8e6o"]
-[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game/player/ball/ball.tscn" id="3_l8e6o"]
+[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game_Mechanics/player/ball/ball.tscn" id="3_l8e6o"]
 [ext_resource type="Script" uid="uid://ccesymnuynyt3" path="res://Test/path_practice/path_practice_2/test.gd" id="4_x14se"]
 
 [sub_resource type="Curve3D" id="Curve3D_2q6kx"]

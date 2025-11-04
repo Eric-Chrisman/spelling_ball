@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjsh4hs8xf2bu"]
 
-[ext_resource type="Script" uid="uid://dank2fnwcphmv" path="res://Game/player/ball/player.gd" id="1_gu8ik"]
+[ext_resource type="Script" uid="uid://dank2fnwcphmv" path="res://Game_Mechanics/player/ball/player.gd" id="1_gu8ik"]
 [ext_resource type="Texture2D" uid="uid://fbsb3l757mjr" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Grass/Grass_01-256x256.png" id="1_ijtm6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_trv1m"]

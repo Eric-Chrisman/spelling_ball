@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://2ss1qbnrovlv"]
 
-[ext_resource type="PackedScene" uid="uid://d350iuy8inuax" path="res://Game/ultity/llaso/llaso.tscn" id="1_3up64"]
-[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game/player/ball/ball.tscn" id="2_v1o1q"]
+[ext_resource type="PackedScene" uid="uid://d350iuy8inuax" path="res://Game_Mechanics/ultity/llaso/llaso.tscn" id="1_3up64"]
+[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game_Mechanics/player/ball/ball.tscn" id="2_v1o1q"]
 [ext_resource type="Script" uid="uid://0071chbhacsv" path="res://Test/llaso_test/move_forward.gd" id="3_tl3qd"]
 [ext_resource type="Texture2D" uid="uid://bwb8f3oen4ip" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Tile/Tile_02-256x256.png" id="4_v1o1q"]
 
