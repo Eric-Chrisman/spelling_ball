@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://e2g3xcr5d5x5"]
+
+[ext_resource type="Script" uid="uid://cuq4qarov6m5y" path="res://Game_Mechanics/Problem/Problem_UI/Problem_UI.gd" id="1_wmfsn"]
+
+[node name="Problem_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wmfsn")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -303.0
+offset_right = 136.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer"]
+layout_mode = 2

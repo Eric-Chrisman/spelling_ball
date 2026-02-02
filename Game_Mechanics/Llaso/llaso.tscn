@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d350iuy8inuax"]
+
+[ext_resource type="Script" uid="uid://nccrlj32hi0p" path="res://Game_Mechanics/Llaso/llaso.gd" id="1_32ugc"]
+
+[node name="llaso" type="Node3D"]
+script = ExtResource("1_32ugc")

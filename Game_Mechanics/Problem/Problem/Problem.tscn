@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgj0niop1ggj5"]
+
+[ext_resource type="Script" uid="uid://bwtqjcdawxa7a" path="res://Game_Mechanics/Problem/Problem/problem.gd" id="1_ckblx"]
+
+[node name="Problem" type="Node"]
+script = ExtResource("1_ckblx")
+metadata/_custom_type_script = "uid://bwtqjcdawxa7a"

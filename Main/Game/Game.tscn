@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bupjwud3hy3v7"]
 
-[ext_resource type="PackedScene" uid="uid://bpepefianf62a" path="res://Game_Mechanics/ultity/rail_system/rail_system.tscn" id="1_b8vfe"]
+[ext_resource type="PackedScene" uid="uid://bpepefianf62a" path="res://Game_Mechanics/Rail_System/rail_system.tscn" id="1_b8vfe"]
 [ext_resource type="Script" uid="uid://dxhfs1f0kgn20" path="res://Main/Game/game.gd" id="1_spt6k"]
-[ext_resource type="PackedScene" uid="uid://br4vaypw87pj2" path="res://Game_Mechanics/ultity/path/path.tscn" id="3_spt6k"]
+[ext_resource type="PackedScene" uid="uid://br4vaypw87pj2" path="res://Game_Mechanics/Pathing/path.tscn" id="3_spt6k"]
 [ext_resource type="Texture2D" uid="uid://dys8u2bvfgtw7" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Wood/Wood_02-256x256.png" id="4_2kjoi"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dpgtf"]
@@ -23,6 +23,8 @@ path = NodePath("../path")
 speed = 9.685
 
 [node name="path" parent="." instance=ExtResource("3_spt6k")]
+max_amount_of_blocks = 20
+block_of_focus = 5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ovdhp")

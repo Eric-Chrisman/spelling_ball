@@ -37,7 +37,7 @@ folder_colors={
 "res://Game_Mechanics/": "purple",
 "res://Main/": "orange",
 "res://ReadMe/": "gray",
-"res://Test/": "gray",
+"res://Test-Do_not_export/": "gray",
 "res://addons/": "gray"
 }
 

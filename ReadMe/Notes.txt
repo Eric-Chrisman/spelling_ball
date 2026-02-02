@@ -2,5 +2,5 @@ Godot-Sqlite
 Docs:  https://github.com/2shady4u/godot-sqlite?tab=readme-ov-file
 Video: https://www.youtube.com/watch?v=j-BRiTrw_F0
 
-Recommended
+Recommended Tools
 https://sqlitebrowser.org/

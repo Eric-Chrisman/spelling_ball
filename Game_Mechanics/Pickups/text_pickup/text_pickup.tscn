@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://2u1mn7agt6ns"]
+
+[ext_resource type="Texture2D" uid="uid://ct41yrm1fg5l2" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Roofs/Roofs_02-256x256.png" id="1_543r2"]
+[ext_resource type="Script" uid="uid://diyg4xnetu43p" path="res://Game_Mechanics/Pickups/text_pickup/text_pickup.gd" id="1_mdybv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3kcv"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = ExtResource("1_543r2")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bg0gr"]
+material = SubResource("StandardMaterial3D_u3kcv")
+radius = 0.2
+height = 0.5
+
+[node name="text_pickup" type="Node3D" node_paths=PackedStringArray("label")]
+script = ExtResource("1_mdybv")
+label = NodePath("MeshInstance3D/Label3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24407, 0)
+mesh = SubResource("CapsuleMesh_bg0gr")
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.371073, -0.0561352)
+billboard = 1
+text = "S"
