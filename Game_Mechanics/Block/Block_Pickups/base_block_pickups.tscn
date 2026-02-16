@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct2i5blecfk82"]
+
+[ext_resource type="Script" uid="uid://poevlp4ywslk" path="res://Game_Mechanics/Block/Block_Pickups/base_block_pickups.gd" id="1_86mlm"]
+[ext_resource type="PackedScene" uid="uid://b8iftg62fbvvl" path="res://Game_Mechanics/Block/pickup_manager/Pickup_Manager.tscn" id="2_uvbsf"]
+
+[node name="Base_Block_Pickups" type="Node3D" node_paths=PackedStringArray("pickup_manager")]
+script = ExtResource("1_86mlm")
+pickup_manager = NodePath("Pickup_Manager")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="Path3D" type="Path3D" parent="."]
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.248627, 0, -0.58738)
+loop = false
+
+[node name="Pickup_Manager" parent="." instance=ExtResource("2_uvbsf")]

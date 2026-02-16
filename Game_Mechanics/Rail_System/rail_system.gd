@@ -3,7 +3,6 @@ class_name RailSystem
 
 @export var path: Path
 @export var speed: float = 10.0
-
 @onready var player: Node3D = $Player
 @onready var player_ref: Player = $Player/CharacterBody3D
 var current_block: Block
@@ -41,4 +40,4 @@ func transition_to_next_block() -> void:
 	#var overhead = old_block.path_follow.progress - old_block.path_follow.curve.get_baked_length()
 	var overhead = 0
 	current_block.adopt_player(player, overhead)
-	print("Transitioned player to next block")
+	#print("Transitioned player to next block")
