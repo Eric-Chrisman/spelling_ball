@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://foyytvnp6f0n"]
+
+[ext_resource type="Script" uid="uid://c7258rvj1n3ek" path="res://Game_Mechanics/Problem/Problem_UI/letter_ui/letter_ui.gd" id="1_eixu6"]
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(20, 20)
+offset_left = -10.0
+offset_top = -12.0
+offset_right = 10.0
+offset_bottom = 11.0
+script = ExtResource("1_eixu6")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "?"
+horizontal_alignment = 1

@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bupjwud3hy3v7"]
+[gd_scene load_steps=12 format=3 uid="uid://bupjwud3hy3v7"]
 
-[ext_resource type="PackedScene" uid="uid://bpepefianf62a" path="res://Game_Mechanics/ultity/rail_system/rail_system.tscn" id="1_b8vfe"]
+[ext_resource type="PackedScene" uid="uid://bpepefianf62a" path="res://Game_Mechanics/Rail_System/rail_system.tscn" id="1_b8vfe"]
 [ext_resource type="Script" uid="uid://dxhfs1f0kgn20" path="res://Main/Game/game.gd" id="1_spt6k"]
-[ext_resource type="PackedScene" uid="uid://br4vaypw87pj2" path="res://Game_Mechanics/ultity/path/path.tscn" id="3_spt6k"]
+[ext_resource type="PackedScene" uid="uid://br4vaypw87pj2" path="res://Game_Mechanics/Pathing/path.tscn" id="3_spt6k"]
 [ext_resource type="Texture2D" uid="uid://dys8u2bvfgtw7" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Wood/Wood_02-256x256.png" id="4_2kjoi"]
+[ext_resource type="PackedScene" uid="uid://e2g3xcr5d5x5" path="res://Game_Mechanics/Problem/Problem_UI/Problem_UI.tscn" id="5_qodx8"]
+[ext_resource type="PackedScene" uid="uid://bgj0niop1ggj5" path="res://Game_Mechanics/Problem/Problem_Tracker/Problem_Tracker.tscn" id="6_ovdhp"]
+[ext_resource type="PackedScene" uid="uid://d1103lpirfarw" path="res://Game_Mechanics/Pickup_Spwaner/Pickup_Spwaner.tscn" id="7_ovdhp"]
+[ext_resource type="PackedScene" uid="uid://d0wvqe7yes32p" path="res://Game_Mechanics/TTS/TTS.tscn" id="8_f7sh8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dpgtf"]
 panorama = ExtResource("4_2kjoi")
@@ -20,9 +24,24 @@ script = ExtResource("1_spt6k")
 
 [node name="Rail_System" parent="." node_paths=PackedStringArray("path") instance=ExtResource("1_b8vfe")]
 path = NodePath("../path")
-speed = 9.685
+speed = 5.0
 
-[node name="path" parent="." instance=ExtResource("3_spt6k")]
+[node name="path" parent="." node_paths=PackedStringArray("problem_tracker", "pickup_spawner") instance=ExtResource("3_spt6k")]
+max_amount_of_blocks = 20
+block_of_focus = 5
+problem_tracker = NodePath("../Problem")
+pickup_spawner = NodePath("../PickupSpwaner")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ovdhp")
+
+[node name="Problem_UI" parent="." instance=ExtResource("5_qodx8")]
+
+[node name="Problem" parent="." node_paths=PackedStringArray("UI", "tts") instance=ExtResource("6_ovdhp")]
+UI = NodePath("../Problem_UI")
+tts = NodePath("../TTS")
+
+[node name="PickupSpwaner" parent="." node_paths=PackedStringArray("problem_tracker") instance=ExtResource("7_ovdhp")]
+problem_tracker = NodePath("../Problem")
+
+[node name="TTS" parent="." instance=ExtResource("8_f7sh8")]
