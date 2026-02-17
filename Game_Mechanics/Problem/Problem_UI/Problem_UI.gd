@@ -6,6 +6,8 @@ var divider_ui_scene: PackedScene = preload("res://Game_Mechanics/Problem/Proble
 
 @onready var question_location: HBoxContainer = $PanelContainer/CenterContainer/HBoxContainer
 
+@onready var real_word_label: Label = $"Is_Real"
+
 var current_word: Word
 
 func set_question(new_word: Word):
@@ -15,6 +17,13 @@ func set_question(new_word: Word):
 	if not is_node_ready():
 		await ready
 	
+	if new_word.is_real:
+		real_word_label.text = "Real"
+		real_word_label.modulate = Color.WHITE
+	else:
+		real_word_label.text = "Not Real"
+		real_word_label.modulate = Color.ORANGE
+	
 	for child in question_location.get_children():
 		question_location.remove_child(child)
 		child.queue_free()
@@ -23,10 +32,10 @@ func set_question(new_word: Word):
 	
 	for i in range(current_word.syllables.size()):
 		var syllable: Syllable = current_word.syllables[i]
-		
+		var syllable_color = get_color_from_syllable_type(syllable.Syllable_Type)
 		for letter in syllable.text:
 			var new_letter: Letter_UI = letter_ui_scene.instantiate()
-			new_letter.set_letter(letter)
+			new_letter.set_letter(letter, syllable_color)
 			new_letter.name = str(letter_index)
 			letter_index += 1
 			question_location.add_child(new_letter)
@@ -49,3 +58,20 @@ func set_letter_correct(index: int, is_correct: bool = true):
 		letter.set_correct(is_correct)
 	else:
 		push_error("Error in set_letter_correct: Didn't find letter at index " + str(index))
+
+func get_color_from_syllable_type(syllable_type: Syllable.SYLLABLE_TYPE) -> Color:
+	match syllable_type:
+		Syllable.SYLLABLE_TYPE.OPEN:
+			return Color.MEDIUM_PURPLE
+		Syllable.SYLLABLE_TYPE.CLOSED:
+			return Color.CORNFLOWER_BLUE
+		Syllable.SYLLABLE_TYPE.VOWEL_TEAM:
+			return Color.MEDIUM_SEA_GREEN
+		Syllable.SYLLABLE_TYPE.R_CONTROLLED:
+			return Color.ORANGE
+		Syllable.SYLLABLE_TYPE.DIPHTONG:
+			return Color.GOLD
+		Syllable.SYLLABLE_TYPE.CONSONANT_LE:
+			return Color.HOT_PINK
+		_:
+			return Color.WHITE

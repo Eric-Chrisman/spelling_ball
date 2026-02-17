@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bupjwud3hy3v7"]
+[gd_scene load_steps=13 format=3 uid="uid://bupjwud3hy3v7"]
 
 [ext_resource type="PackedScene" uid="uid://bpepefianf62a" path="res://Game_Mechanics/Rail_System/rail_system.tscn" id="1_b8vfe"]
 [ext_resource type="Script" uid="uid://dxhfs1f0kgn20" path="res://Main/Game/game.gd" id="1_spt6k"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bgj0niop1ggj5" path="res://Game_Mechanics/Problem/Problem_Tracker/Problem_Tracker.tscn" id="6_ovdhp"]
 [ext_resource type="PackedScene" uid="uid://d1103lpirfarw" path="res://Game_Mechanics/Pickup_Spwaner/Pickup_Spwaner.tscn" id="7_ovdhp"]
 [ext_resource type="PackedScene" uid="uid://d0wvqe7yes32p" path="res://Game_Mechanics/TTS/TTS.tscn" id="8_f7sh8"]
+[ext_resource type="PackedScene" uid="uid://cmfh4wwt6tymk" path="res://Game_Mechanics/Feedback_Sound_Player/Feedback_Sound_Player.tscn" id="9_7r466"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dpgtf"]
 panorama = ExtResource("4_2kjoi")
@@ -29,7 +30,7 @@ speed = 5.0
 [node name="path" parent="." node_paths=PackedStringArray("problem_tracker", "pickup_spawner") instance=ExtResource("3_spt6k")]
 max_amount_of_blocks = 20
 block_of_focus = 5
-problem_tracker = NodePath("../Problem")
+problem_tracker = NodePath("../Problem_Tracker")
 pickup_spawner = NodePath("../PickupSpwaner")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -37,11 +38,16 @@ environment = SubResource("Environment_ovdhp")
 
 [node name="Problem_UI" parent="." instance=ExtResource("5_qodx8")]
 
-[node name="Problem" parent="." node_paths=PackedStringArray("UI", "tts") instance=ExtResource("6_ovdhp")]
+[node name="Problem_Tracker" parent="." node_paths=PackedStringArray("UI", "tts") instance=ExtResource("6_ovdhp")]
 UI = NodePath("../Problem_UI")
 tts = NodePath("../TTS")
 
 [node name="PickupSpwaner" parent="." node_paths=PackedStringArray("problem_tracker") instance=ExtResource("7_ovdhp")]
-problem_tracker = NodePath("../Problem")
+problem_tracker = NodePath("../Problem_Tracker")
 
 [node name="TTS" parent="." instance=ExtResource("8_f7sh8")]
+
+[node name="FeedbackSoundPlayer" parent="." instance=ExtResource("9_7r466")]
+
+[connection signal="correct_letter_hit" from="Problem_Tracker" to="FeedbackSoundPlayer" method="correct_buzzer"]
+[connection signal="wrong_letter_hit" from="Problem_Tracker" to="FeedbackSoundPlayer" method="incorrect_buzzer"]

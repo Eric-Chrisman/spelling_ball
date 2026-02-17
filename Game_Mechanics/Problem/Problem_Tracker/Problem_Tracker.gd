@@ -1,13 +1,16 @@
 extends Node
 class_name Problem_Tracker
 
+# Tracks the problem currently in play. Also controls tts
+
 @export var UI: Problem_UI
 @export var tts: TTS
 
-@onready var letter_sound_effect_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
-
 var current_word: Word
 var progress: int = 0
+
+signal correct_letter_hit(letter_in_sequence: float)
+signal wrong_letter_hit
 
 func _ready():
 	generate_word()
@@ -18,25 +21,18 @@ func _process(delta: float) -> void:
 
 # connect signals to this
 func letter_hit(letter: String):
-	print(letter)
+	#print(letter)
 	if current_word.text[progress] == letter:
 		progress += 1
 		UI.set_letter_correct(progress - 1, true)
+		emit_signal("correct_letter_hit", float(progress) / current_word.text.length())
 		
 		if progress == current_word.text.length():
 			generate_word()
 			# update ui
 	else:
+		emit_signal("wrong_letter_hit")
 		pass # i don't know yet, come back here later
-	
-	# sound effect
-	letter_sound_effect_player.stop()
-	var sound_path = "res://Assets/Sound_Effects/letters/alphasounds-" + letter + ".mp3"
-	if ResourceLoader.exists(sound_path):
-		letter_sound_effect_player.stream = load(sound_path)
-	else:
-		push_warning("No sound file found at: " + sound_path)
-	letter_sound_effect_player.play()
 
 # function gives you the next character that spells the word
 func get_next_letter() -> String:

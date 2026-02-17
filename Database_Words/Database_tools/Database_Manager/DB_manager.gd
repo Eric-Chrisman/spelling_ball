@@ -58,18 +58,19 @@ func generate_word() -> Word:
 		return null
 	
 	# Query a random word from the Word table
-	var query = "SELECT * FROM Word WHERE is_real = 1 ORDER BY RANDOM() LIMIT 1;"
+	var query = "SELECT * FROM Words ORDER BY RANDOM() LIMIT 1;"
 	db.query(query)
 	
 	if db.query_result.size() > 0:
 		var word_data = db.query_result[0]
 		var word_name = word_data["name"]
+		var is_real = word_data["is_real"]
 		
 		# Query syllables for this word via Syllable_Index
 		var syllable_query = """
 			SELECT s.syllable, s.syllable_type, si.position
-			FROM Syllable_Index si
-			JOIN Syllable s ON si.syllable_id = s.syllable_id
+			FROM Syllable_Indexes si
+			JOIN Syllables s ON si.syllable_id = s.syllable_id
 			WHERE si.word_id = '%s'
 			ORDER BY si.position;
 		""" % word_name
@@ -82,12 +83,12 @@ func generate_word() -> Word:
 			# Use OPEN as placeholder for now (first enum value)
 			var syllable = Syllable.new(
 				syllable_data["syllable"],
-				Syllable.SYLLABLE_TYPE.OPEN  # Placeholder
+				Syllable.get_syllable_type_from_string(syllable_data["syllable_type"])
 			)
 			syllables.append(syllable)
 		
 		# Create and return the Word object
-		var new_word = Word.new(word_name, syllables)
+		var new_word = Word.new(word_name, syllables, is_real)
 		print("Generated word: ", new_word.text, " (", syllables.size(), " syllables)")
 		return new_word
 	else:

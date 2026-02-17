@@ -30,3 +30,11 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer"]
 layout_mode = 2
+
+[node name="Is_Real" type="Label" parent="."]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 138.0
+offset_right = 497.0
+offset_bottom = 161.0
+text = "Real"

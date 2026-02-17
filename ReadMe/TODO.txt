@@ -1,0 +1,9 @@
+TODO
+
+Fake words, make them and split them into syallbles
+TTS, make it better
+Sound effects
+Interventist tools
+Track student progress
+clear the board on question solved
+main menu

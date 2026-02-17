@@ -6,3 +6,6 @@ class_name Game
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("up"):
 		rail_system.start()
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
