@@ -1,9 +1,249 @@
-[gd_scene load_steps=2 format=3 uid="uid://n5bsk4qa5847"]
+[gd_scene load_steps=18 format=3 uid="uid://p8tra78t7quq"]
 
-[ext_resource type="PackedScene" uid="uid://ck12lsrvq4mh4" path="res://Main/Main_Menu/Main_Menu.tscn" id="1_lxy7q"]
+[ext_resource type="Script" uid="uid://yj83wlrjtpk6" path="res://Main/main.gd" id="1_83ytx"]
+[ext_resource type="LabelSettings" uid="uid://b1ssfwdgkpqu8" path="res://Assets/Themes/Title_Font.tres" id="2_amygn"]
+[ext_resource type="Script" uid="uid://d25ht6gi8dbtu" path="res://Main/title_animation.gd" id="3_amygn"]
+[ext_resource type="Texture2D" uid="uid://dys8u2bvfgtw7" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Wood/Wood_02-256x256.png" id="4_ps1la"]
+[ext_resource type="PackedScene" uid="uid://dlc55fyx57c3h" path="res://Database_Words/user_db_filter_ui/db_settings.tscn" id="5_6aewd"]
+
+[sub_resource type="Animation" id="Animation_amygn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_83ytx"]
+resource_name = "sin_grow"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0, 0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ps1la"]
+_data = {
+&"RESET": SubResource("Animation_amygn"),
+&"sin_grow": SubResource("Animation_83ytx")
+}
+
+[sub_resource type="Animation" id="Animation_ps1la"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lxy7q"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1.7411, 0.517632, 0.392292),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6aewd"]
+_data = {
+&"RESET": SubResource("Animation_ps1la"),
+&"new_animation": SubResource("Animation_lxy7q")
+}
+
+[sub_resource type="Animation" id="Animation_u2i7p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6aewd"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hh5pf"]
+_data = {
+&"RESET": SubResource("Animation_u2i7p"),
+&"new_animation": SubResource("Animation_6aewd")
+}
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6aewd"]
+panorama = ExtResource("4_ps1la")
+
+[sub_resource type="Sky" id="Sky_qodx8"]
+sky_material = SubResource("PanoramaSkyMaterial_6aewd")
+
+[sub_resource type="Environment" id="Environment_u2i7p"]
+background_mode = 2
+sky = SubResource("Sky_qodx8")
 
 [node name="Main" type="Node"]
+script = ExtResource("1_83ytx")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Main_Menu" type="CanvasLayer" parent="."]
 
-[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_lxy7q")]
+[node name="Main_Menu" type="Control" parent="Main_Menu"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Main_Menu/Main_Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.5
+offset_top = 10.0
+offset_right = 92.5
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main_Menu/Main_Menu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_Menu/Main_Menu/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Start" type="Button" parent="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start!"
+
+[node name="Intervetion" type="Button" parent="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Interventist Settings"
+
+[node name="Settings" type="Button" parent="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+disabled = true
+text = "Settings"
+
+[node name="Exit" type="Button" parent="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Label" type="Label" parent="Main_Menu/Main_Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -4.9
+anchor_right = 0.5
+anchor_bottom = -4.9
+offset_left = -300.0
+offset_top = -44.0
+offset_right = 300.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(300, 44)
+size_flags_horizontal = 4
+text = "SPELLING   BALL"
+label_settings = ExtResource("2_amygn")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_amygn")
+metadata/_edit_use_anchors_ = true
+
+[node name="rotate" type="AnimationPlayer" parent="Main_Menu/Main_Menu/Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_ps1la")
+}
+
+[node name="size" type="AnimationPlayer" parent="Main_Menu/Main_Menu/Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_6aewd")
+}
+
+[node name="veil" type="ColorRect" parent="Main_Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="lift_veil" type="AnimationPlayer" parent="Main_Menu/veil"]
+libraries = {
+&"": SubResource("AnimationLibrary_hh5pf")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u2i7p")
+
+[node name="Interventist_Settings" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DbSettings" parent="Interventist_Settings" instance=ExtResource("5_6aewd")]
+
+[connection signal="pressed" from="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer/Intervetion" to="." method="_on_intervetion_pressed"]
+[connection signal="pressed" from="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="exit_pressed" from="Interventist_Settings/DbSettings" to="." method="_on_db_settings_exit_pressed"]

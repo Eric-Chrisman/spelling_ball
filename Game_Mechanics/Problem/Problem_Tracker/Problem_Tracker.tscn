@@ -1,14 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgj0niop1ggj5"]
+[gd_scene load_steps=2 format=3 uid="uid://bgj0niop1ggj5"]
 
 [ext_resource type="Script" uid="uid://bwtqjcdawxa7a" path="res://Game_Mechanics/Problem/Problem_Tracker/Problem_Tracker.gd" id="1_ckblx"]
-
-[sub_resource type="GDScript" id="GDScript_6ceph"]
-script/source = "extends Node
-"
 
 [node name="Problem" type="Node"]
 script = ExtResource("1_ckblx")
 metadata/_custom_type_script = "uid://bwtqjcdawxa7a"
 
-[node name="Node" type="Node" parent="."]
-script = SubResource("GDScript_6ceph")
+[node name="completed_problem_wait_time" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="completed_problem_wait_time" to="." method="_on_completed_problem_wait_time_timeout"]

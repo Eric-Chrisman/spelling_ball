@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func set_letter(new_letter: String):
 	letter = new_letter
-	label.text = letter
+	label.text = letter.capitalize()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:

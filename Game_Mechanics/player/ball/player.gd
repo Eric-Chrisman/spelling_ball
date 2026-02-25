@@ -10,6 +10,8 @@ enum LANES {
 @export var lane_width: float = 100
 var current_lane: LANES = LANES.MIDDLE
 
+@export var shadow_blob: MeshInstance3D
+
 var jump_strength: int = 5
 var gravity_strength: float = 9.8
 var fast_fall_multiplier: float = 2
@@ -55,3 +57,16 @@ func _process_lane_change(direction: bool):
 		elif current_lane == LANES.MIDDLE:
 			current_lane = LANES.LEFT
 			position.x = -lane_width
+
+func _physics_process(delta):
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(global_position, global_position + Vector3.DOWN * 200)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+	
+	if result:
+		shadow_blob.global_position = Vector3(global_position.x, result.position.y + 0.01, global_position.z)
+		var dist = global_position.y - result.position.y
+		var s = clamp(1.0 - dist * 0.1, 0.1, 1.0)
+		shadow_blob.scale = Vector3(s, s, s)
+		shadow_blob.global_position.y += 0.1

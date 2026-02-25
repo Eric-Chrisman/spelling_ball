@@ -1,24 +1,82 @@
-[gd_scene load_steps=13 format=3 uid="uid://bupjwud3hy3v7"]
+[gd_scene load_steps=18 format=3 uid="uid://bupjwud3hy3v7"]
 
 [ext_resource type="PackedScene" uid="uid://bpepefianf62a" path="res://Game_Mechanics/Rail_System/rail_system.tscn" id="1_b8vfe"]
 [ext_resource type="Script" uid="uid://dxhfs1f0kgn20" path="res://Main/Game/game.gd" id="1_spt6k"]
 [ext_resource type="PackedScene" uid="uid://br4vaypw87pj2" path="res://Game_Mechanics/Pathing/path.tscn" id="3_spt6k"]
-[ext_resource type="Texture2D" uid="uid://dys8u2bvfgtw7" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Wood/Wood_02-256x256.png" id="4_2kjoi"]
 [ext_resource type="PackedScene" uid="uid://e2g3xcr5d5x5" path="res://Game_Mechanics/Problem/Problem_UI/Problem_UI.tscn" id="5_qodx8"]
 [ext_resource type="PackedScene" uid="uid://bgj0niop1ggj5" path="res://Game_Mechanics/Problem/Problem_Tracker/Problem_Tracker.tscn" id="6_ovdhp"]
 [ext_resource type="PackedScene" uid="uid://d1103lpirfarw" path="res://Game_Mechanics/Pickup_Spwaner/Pickup_Spwaner.tscn" id="7_ovdhp"]
 [ext_resource type="PackedScene" uid="uid://d0wvqe7yes32p" path="res://Game_Mechanics/TTS/TTS.tscn" id="8_f7sh8"]
 [ext_resource type="PackedScene" uid="uid://cmfh4wwt6tymk" path="res://Game_Mechanics/Feedback_Sound_Player/Feedback_Sound_Player.tscn" id="9_7r466"]
+[ext_resource type="Texture2D" uid="uid://pjqgbg4fv4nr" path="res://Assets/Textures/keyboard/tilemap.png" id="9_argg4"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dpgtf"]
-panorama = ExtResource("4_2kjoi")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dbjc"]
+atlas = ExtResource("9_argg4")
+region = Rect2(527, 102, 51, 16)
 
-[sub_resource type="Sky" id="Sky_qodx8"]
-sky_material = SubResource("PanoramaSkyMaterial_dpgtf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7exgd"]
+atlas = ExtResource("9_argg4")
+region = Rect2(306, 187, 16, 16)
 
-[sub_resource type="Environment" id="Environment_ovdhp"]
-background_mode = 2
-sky = SubResource("Sky_qodx8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lnkv"]
+atlas = ExtResource("9_argg4")
+region = Rect2(340, 187, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do7g4"]
+atlas = ExtResource("9_argg4")
+region = Rect2(306, 170, 16, 16)
+
+[sub_resource type="Animation" id="Animation_kmnsd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kf8jr"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.406126, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h5g1y"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.482968, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qd626"]
+_data = {
+&"RESET": SubResource("Animation_kmnsd"),
+&"fade_in": SubResource("Animation_kf8jr"),
+&"fade_out": SubResource("Animation_h5g1y")
+}
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_spt6k")
@@ -33,9 +91,6 @@ block_of_focus = 5
 problem_tracker = NodePath("../Problem_Tracker")
 pickup_spawner = NodePath("../PickupSpwaner")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ovdhp")
-
 [node name="Problem_UI" parent="." instance=ExtResource("5_qodx8")]
 
 [node name="Problem_Tracker" parent="." node_paths=PackedStringArray("UI", "tts") instance=ExtResource("6_ovdhp")]
@@ -49,5 +104,88 @@ problem_tracker = NodePath("../Problem_Tracker")
 
 [node name="FeedbackSoundPlayer" parent="." instance=ExtResource("9_7r466")]
 
+[node name="tutorial" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="tutorial"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="tutorial/Control"]
+layout_mode = 0
+offset_left = 779.0
+offset_top = 676.0
+offset_right = 830.0
+offset_bottom = 692.0
+scale = Vector2(4.40512, 4.40512)
+texture = SubResource("AtlasTexture_0dbjc")
+
+[node name="TextureRect2" type="TextureRect" parent="tutorial/Control"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 672.0
+offset_right = 131.0
+offset_bottom = 688.0
+scale = Vector2(4.40513, 4.40513)
+texture = SubResource("AtlasTexture_7exgd")
+
+[node name="TextureRect3" type="TextureRect" parent="tutorial/Control"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 672.0
+offset_right = 320.0
+offset_bottom = 688.0
+scale = Vector2(4.40514, 4.40514)
+texture = SubResource("AtlasTexture_2lnkv")
+
+[node name="TextureRect4" type="TextureRect" parent="tutorial/Control"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 498.0
+offset_right = 224.0
+offset_bottom = 514.0
+scale = Vector2(4.40514, 4.40514)
+texture = SubResource("AtlasTexture_do7g4")
+
+[node name="Polygon2D2" type="Polygon2D" parent="tutorial/Control"]
+position = Vector2(328, 627)
+rotation = 3.14159
+scale = Vector2(1.39472, 1.39472)
+polygon = PackedVector2Array(-1.52588e-05, -16, -56, 8, -6.47461e-07, 32, -6.47461e-07, 16, 56, 8, 56, 8, -1.52588e-05, 0)
+uv = PackedVector2Array(-136, -32, -192, -8, -136, 8, -136, -8, -80, -8, -80, -16, -136, -16)
+
+[node name="Polygon2D4" type="Polygon2D" parent="tutorial/Control"]
+position = Vector2(251, 415)
+rotation = 1.57079
+scale = Vector2(1.39472, 1.39472)
+polygon = PackedVector2Array(-1.52588e-05, -16, -56, 8, -6.47461e-07, 32, -6.47461e-07, 16, 56, 8, 56, 8, -1.52588e-05, 0)
+uv = PackedVector2Array(-136, -32, -192, -8, -136, 8, -136, -8, -80, -8, -80, -16, -136, -16)
+
+[node name="Polygon2D3" type="Polygon2D" parent="tutorial/Control"]
+position = Vector2(154, 605)
+scale = Vector2(1.39472, 1.39472)
+polygon = PackedVector2Array(-1.52588e-05, -16, -30.4403, -2.95419, -56, 8, -6.47461e-07, 32, -6.47461e-07, 16, 56, 8, 56, 8, -1.52588e-05, 0)
+uv = PackedVector2Array(-136, -32, -192, -8, -136, 8, -136, -8, -80, -8, -80, -16, -136, -16)
+
+[node name="Label" type="Label" parent="tutorial/Control"]
+layout_mode = 0
+offset_left = 834.0
+offset_top = 628.0
+offset_right = 937.0
+offset_bottom = 651.0
+text = "SPEAK WORD"
+
+[node name="Timer" type="Timer" parent="tutorial"]
+wait_time = 5.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="tutorial"]
+libraries = {
+&"": SubResource("AnimationLibrary_qd626")
+}
+
 [connection signal="correct_letter_hit" from="Problem_Tracker" to="FeedbackSoundPlayer" method="correct_buzzer"]
+[connection signal="problem_solved" from="Problem_Tracker" to="path" method="clear_pickups_on_problem_solved"]
 [connection signal="wrong_letter_hit" from="Problem_Tracker" to="FeedbackSoundPlayer" method="incorrect_buzzer"]
+[connection signal="timeout" from="tutorial/Timer" to="." method="_on_timer_timeout"]

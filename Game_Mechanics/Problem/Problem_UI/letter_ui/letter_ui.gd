@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func set_letter(letter: String, syllable_color: Color):
 	self.letter = letter
-	$CenterContainer/Label.modulate = syllable_color
+	modulate = syllable_color
 
 func set_correct(is_correct: bool):
 	if is_correct:

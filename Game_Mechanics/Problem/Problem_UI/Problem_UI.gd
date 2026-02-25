@@ -11,6 +11,7 @@ var divider_ui_scene: PackedScene = preload("res://Game_Mechanics/Problem/Proble
 var current_word: Word
 
 func set_question(new_word: Word):
+	visible = 1
 	current_word = new_word
 	
 	# First, remove the current question from ui
@@ -66,7 +67,7 @@ func get_color_from_syllable_type(syllable_type: Syllable.SYLLABLE_TYPE) -> Colo
 		Syllable.SYLLABLE_TYPE.CLOSED:
 			return Color.CORNFLOWER_BLUE
 		Syllable.SYLLABLE_TYPE.VOWEL_TEAM:
-			return Color.MEDIUM_SEA_GREEN
+			return Color.FIREBRICK
 		Syllable.SYLLABLE_TYPE.R_CONTROLLED:
 			return Color.ORANGE
 		Syllable.SYLLABLE_TYPE.DIPHTONG:

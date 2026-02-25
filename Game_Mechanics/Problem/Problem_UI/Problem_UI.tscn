@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cuq4qarov6m5y" path="res://Game_Mechanics/Problem/Problem_UI/Problem_UI.gd" id="1_wmfsn"]
 
 [node name="Problem_UI" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

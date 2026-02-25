@@ -9,7 +9,7 @@ enum SYLLABLE_TYPE {
 	DIPHTONG = 5,
 	CONSONANT_LE = 6,
 	MAGIC_E = 7,
-	NONE = 8
+	NONE = 0
 }
 
 var text: String

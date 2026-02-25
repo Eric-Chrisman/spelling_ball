@@ -1,28 +1,6 @@
 [gd_scene format=3 uid="uid://bh1nuyp48mwq6"]
 
-[node name="DividerUi" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -78.045
-offset_top = -44.1625
-offset_right = 78.045
-offset_bottom = 44.1625
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(12.68, 8.325)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer"]
-layout_mode = 2
+[node name="ColorRect" type="ColorRect"]
+custom_minimum_size = Vector2(14.24, 31.66)
+offset_right = 0.065
+offset_bottom = 31.66
