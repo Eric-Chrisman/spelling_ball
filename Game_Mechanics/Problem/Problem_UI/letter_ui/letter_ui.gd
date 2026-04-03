@@ -1,13 +1,17 @@
 extends PanelContainer
 class_name Letter_UI
 
-var letter: String = ""
+var letter: String = "-"
 
-func _ready() -> void:
-	$CenterContainer/Label.text = "-"
+#func _ready() -> void:
+#	$CenterContainer/Label.text = letter
 
-func set_letter(letter: String, syllable_color: Color):
+func set_letter(letter: String = self.letter, syllable_color: Color = self.modulate, hide_letter: bool = true):
 	self.letter = letter
+	if hide_letter:
+		$CenterContainer/Label.text = "-"
+	else:
+		$CenterContainer/Label.text = letter.capitalize()
 	modulate = syllable_color
 
 func set_correct(is_correct: bool):

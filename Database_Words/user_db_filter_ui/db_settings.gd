@@ -14,18 +14,13 @@ signal exit_pressed
 @onready var vowel_team_box: CheckBox = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CheckBox5
 @onready var le_box: CheckBox = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CheckBox6
 @onready var dipthong_box: CheckBox = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CheckBox7
-
-const SYLLABLE_TYPE_MAP = {
-	"open_box": "Open",
-	"closed_box": "Closed",
-	"magic_e_box": "Magic_e",
-	"r_box": "R_controlled",
-	"vowel_team_box": "Vowel Team",
-	"le_box": "Consonant-le",
-	"dipthong_box": "Diphthong"
-}
+@onready var problem_set_selector: OptionButton = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton
 
 var db_manager: Node
+
+func ready_menu():
+	load_problem_sets()
+	visible = true
 
 func _ready():
 	db_manager = get_node("/root/DbManager")
@@ -38,13 +33,28 @@ func _ready():
 
 	open_box.toggled.connect(_on_syllable_type_toggled.bind(open_box, "Open"))
 	closed_box.toggled.connect(_on_syllable_type_toggled.bind(closed_box, "Closed"))
-	magic_e_box.toggled.connect(_on_syllable_type_toggled.bind(magic_e_box, "Magic_e"))
-	r_box.toggled.connect(_on_syllable_type_toggled.bind(r_box, "R_controlled"))
+	magic_e_box.toggled.connect(_on_syllable_type_toggled.bind(magic_e_box, "Magic-e"))
+	r_box.toggled.connect(_on_syllable_type_toggled.bind(r_box, "R-controlled"))
 	vowel_team_box.toggled.connect(_on_syllable_type_toggled.bind(vowel_team_box, "Vowel Team"))
 	le_box.toggled.connect(_on_syllable_type_toggled.bind(le_box, "Consonant-le"))
 	dipthong_box.toggled.connect(_on_syllable_type_toggled.bind(dipthong_box, "Diphthong"))
-	
+
 	_sync_all()
+
+func load_problem_sets():
+	problem_set_selector.clear()
+	problem_set_selector.add_item("None")  # index 0 = no problem set
+	var sets: Array[String] = db_manager.get_all_problem_sets()
+	for s in sets:
+		problem_set_selector.add_item(s)
+	# Restore previously selected set if any
+	if db_manager.selected_problem_set == "":
+		problem_set_selector.selected = 0
+	else:
+		for i in range(problem_set_selector.item_count):
+			if problem_set_selector.get_item_text(i) == db_manager.selected_problem_set:
+				problem_set_selector.selected = i
+				break
 
 func _sync_all():
 	db_manager.fake_word_probability = fake_words_slider.value
@@ -79,8 +89,7 @@ func _on_max_syllable_changed(value: float):
 
 func _on_syllable_type_toggled(_pressed: bool, _box: CheckBox, _type: String):
 	if not _pressed:
-		var checked_count = _count_checked_syllable_boxes()
-		if checked_count == 0:
+		if _count_checked_syllable_boxes() == 0:
 			_box.set_pressed_no_signal(true)
 			return
 	_update_allowed_syllable_types()
@@ -94,15 +103,20 @@ func _count_checked_syllable_boxes() -> int:
 
 func _update_allowed_syllable_types():
 	var allowed: Array[String] = []
-	if open_box.button_pressed: allowed.append("Open")
-	if closed_box.button_pressed: allowed.append("Closed")
-	if magic_e_box.button_pressed: allowed.append("Magic_e")
-	if r_box.button_pressed: allowed.append("R_controlled")
+	if open_box.button_pressed:      allowed.append("Open")
+	if closed_box.button_pressed:    allowed.append("Closed")
+	if magic_e_box.button_pressed:   allowed.append("Magic-e")
+	if r_box.button_pressed:         allowed.append("R-controlled")
 	if vowel_team_box.button_pressed: allowed.append("Vowel Team")
-	if le_box.button_pressed: allowed.append("Consonant-le")
-	if dipthong_box.button_pressed: allowed.append("Diphthong")
+	if le_box.button_pressed:        allowed.append("Consonant-le")
+	if dipthong_box.button_pressed:  allowed.append("Diphthong")
 	db_manager.allowed_syllable_types = allowed
 
 func _on_button_pressed() -> void:
+	if problem_set_selector.selected == 0:
+		db_manager.selected_problem_set = ""
+	else:
+		db_manager.selected_problem_set = problem_set_selector.get_item_text(problem_set_selector.selected)
+
 	db_manager.refresh_word_pool()
 	emit_signal("exit_pressed")

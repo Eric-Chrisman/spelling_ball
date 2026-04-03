@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://p8tra78t7quq"]
+[gd_scene load_steps=19 format=3 uid="uid://p8tra78t7quq"]
 
 [ext_resource type="Script" uid="uid://yj83wlrjtpk6" path="res://Main/main.gd" id="1_83ytx"]
 [ext_resource type="LabelSettings" uid="uid://b1ssfwdgkpqu8" path="res://Assets/Themes/Title_Font.tres" id="2_amygn"]
 [ext_resource type="Script" uid="uid://d25ht6gi8dbtu" path="res://Main/title_animation.gd" id="3_amygn"]
 [ext_resource type="Texture2D" uid="uid://dys8u2bvfgtw7" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Wood/Wood_02-256x256.png" id="4_ps1la"]
+[ext_resource type="PackedScene" uid="uid://bctcuhhypyv5a" path="res://Database_Words/user_problem_set_editor/user_problem_set_editor_ui.tscn" id="4_u2i7p"]
 [ext_resource type="PackedScene" uid="uid://dlc55fyx57c3h" path="res://Database_Words/user_db_filter_ui/db_settings.tscn" id="5_6aewd"]
 
 [sub_resource type="Animation" id="Animation_amygn"]
@@ -179,10 +180,8 @@ layout_mode = 2
 text = "Interventist Settings"
 
 [node name="Settings" type="Button" parent="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
-disabled = true
-text = "Settings"
+text = "Problem Set Manager"
 
 [node name="Exit" type="Button" parent="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -234,13 +233,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_hh5pf")
 }
 
+[node name="UserProblemSetEditorUi" parent="Main_Menu" instance=ExtResource("4_u2i7p")]
+visible = false
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u2i7p")
 
 [node name="Interventist_Settings" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="DbSettings" parent="Interventist_Settings" instance=ExtResource("5_6aewd")]
+visible = false
+
+[node name="Problem_Sets" type="CanvasLayer" parent="."]
 
 [connection signal="pressed" from="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Main_Menu/Main_Menu/PanelContainer/MarginContainer/VBoxContainer/Intervetion" to="." method="_on_intervetion_pressed"]

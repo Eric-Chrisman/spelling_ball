@@ -16,3 +16,6 @@ func get_syllable_count() -> int:
 
 func get_letter_count() -> int:
 	return text.length()
+
+func print_word() -> void:
+	print(text, "; is real = ", is_real)

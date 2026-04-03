@@ -42,8 +42,11 @@ func _on_start_pressed() -> void:
 
 func _on_intervetion_pressed() -> void:
 	$Main_Menu.visible = false
-	$Interventist_Settings.visible = true
+	$Interventist_Settings/DbSettings.ready_menu()
 
 func _on_db_settings_exit_pressed() -> void:
 	$Main_Menu.visible = true
-	$Interventist_Settings.visible = false
+	$Interventist_Settings/DbSettings.visible = false
+
+func _on_settings_pressed() -> void:
+	$Main_Menu/UserProblemSetEditorUi.visible = true
