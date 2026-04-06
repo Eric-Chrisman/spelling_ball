@@ -350,6 +350,27 @@ func insert_syllables(word_id: int, word: Word):
 		""" % [syll_id, word_id, i]
 		db.query(link)
 
+func clear_problem_set_words(problem_set: String) -> void:
+	var set_query = "SELECT set_id FROM Problem_Sets WHERE name='%s';" % problem_set.replace("'", "''")
+	db.query(set_query)
+	if db.query_result.is_empty():
+		return
+	var set_id = db.query_result[0]["set_id"]
+	db.query("DELETE FROM Problem_Set_Words WHERE set_id=%d;" % set_id)
+
+func delete_problem_set(problem_set: String) -> void:
+	var set_query = "SELECT set_id FROM Problem_Sets WHERE name='%s';" % problem_set.replace("'", "''")
+	db.query(set_query)
+	if db.query_result.is_empty():
+		return
+	var set_id = db.query_result[0]["set_id"]
+	# Remove all word relations first, then the set itself
+	db.query("DELETE FROM Problem_Set_Words WHERE set_id=%d;" % set_id)
+	db.query("DELETE FROM Problem_Sets WHERE set_id=%d;" % set_id)
+	
+	if problem_set == selected_problem_set:
+		selected_problem_set = ""
+		refresh_word_pool()
 
 func _exit_tree():
 	if db:

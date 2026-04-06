@@ -5,6 +5,7 @@ extends Control
 var valid_regex := RegEx.new()
 
 signal menu_closed
+signal set_created(set_name: String)
 
 func _ready():
 	status_label.text = "Please enter a name."
@@ -13,12 +14,14 @@ func _ready():
 func _on_create_pressed():
 	var set_name = name_input.text.strip_edges()
 	if set_name.is_empty():
-		status_label.text = "Please enter a name."
+		status_label.text = "Can't be empty!"
 		return
 	var success = DbManager.create_problem_set(set_name)
 	if success:
 		status_label.text = "Problem set created!"
 		name_input.clear()
+		_on_button_pressed()
+		emit_signal("set_created", set_name)
 	else:
 		status_label.text = "Set already exists or DB error."
 

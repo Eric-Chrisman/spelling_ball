@@ -22,7 +22,7 @@ general/text_to_speech=true
 [autoload]
 
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
-DbManager="*res://Database_Words/Database_tools/Database_Manager/DB_manager.gd"
+DbManager="*res://Database_Words/DB_manager/DB_manager.gd"
 SyllableColorConst="*res://Assets/Syllable_Color_Const/Syllable_Color_Const.gd"
 
 [display]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvv4i6y4ak2bv"]
+[gd_scene load_steps=2 format=3 uid="uid://hlh8wf2xw3l8"]
 
 [ext_resource type="Script" uid="uid://gnd0r7gdq6my" path="res://Database_Words/import_export_features/import_export.gd" id="1_oyjwl"]
 
