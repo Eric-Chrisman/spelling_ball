@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dru2kq3ymp81e"]
+[gd_scene load_steps=5 format=3 uid="uid://dru2kq3ymp81e"]
 
 [ext_resource type="Script" uid="uid://bxlys040p3ts7" path="res://Database_Words/user_word_editor/user_word_editor.gd" id="1_q3my5"]
-[ext_resource type="Script" uid="uid://cpqdjj3cutre4" path="res://Database_Words/user_word_editor/text_edit_word_filter.gd.gd" id="2_lyp2e"]
+[ext_resource type="PackedScene" uid="uid://c40rni4faldlk" path="res://Main/Menu_Auto_Audio/Menu_Auto_Audio.tscn" id="3_q3my5"]
+[ext_resource type="AudioStream" uid="uid://gcj0k4i3dvby" path="res://Assets/Sound_Effects/player_effects/half life 2 menu.mp3" id="4_lyp2e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3my5"]
 bg_color = Color(0.399902, 0.104456, 0.620043, 1)
@@ -15,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q3my5")
 where_to_add_sample_text_labels = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2")
-text_input = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/TextEdit")
+text_input = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/LineEdit")
 add_button = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/Button2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -58,15 +59,11 @@ layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300.34, 35.2)
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(322.325, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 placeholder_text = "- Enter Word Here -"
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-scroll_fit_content_height = true
-script = ExtResource("2_lyp2e")
+alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -92,6 +89,11 @@ layout_mode = 2
 disabled = true
 text = "Add"
 
-[connection signal="text_changed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/TextEdit" to="." method="reset_sample_labels"]
+[node name="MenuAutoAudio" parent="." node_paths=PackedStringArray("connected_buttons") instance=ExtResource("3_q3my5")]
+stream = ExtResource("4_lyp2e")
+connected_buttons = [NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/Button"), NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/Button2")]
+
+[connection signal="text_changed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/Button2" to="." method="_on_button_2_pressed"]

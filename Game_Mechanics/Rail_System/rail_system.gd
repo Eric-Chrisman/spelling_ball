@@ -35,9 +35,11 @@ func transition_to_next_block() -> void:
 	if current_block == null:
 		print("No next block found")
 		return
-
-	# Optional: small continuity offset to prevent teleport gap
 	#var overhead = old_block.path_follow.progress - old_block.path_follow.curve.get_baked_length()
 	var overhead = 0
 	current_block.adopt_player(player, overhead)
 	#print("Transitioned player to next block")
+
+# true = player can move, false = player can't move
+func prime_player(prime: bool):
+	player_ref.disable_movement = !prime

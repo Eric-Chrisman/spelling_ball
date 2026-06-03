@@ -14,8 +14,11 @@ signal wrong_letter_hit
 signal problem_solved
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("space") and current_word:
-		tts.play(current_word.text)
+	if Input.is_action_just_pressed("space"):
+		if current_word:
+			tts.play(current_word.text)
+		else:
+			tts.play("")
 
 func letter_hit(letter: String):
 	#print(letter)

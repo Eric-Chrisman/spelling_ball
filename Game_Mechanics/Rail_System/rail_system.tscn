@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bpepefianf62a"]
 
 [ext_resource type="Script" uid="uid://yup60ebduvqt" path="res://Game_Mechanics/Rail_System/rail_system.gd" id="1_c6axw"]
-[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game_Mechanics/Player/ball/ball.tscn" id="2_hgo3r"]
+[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game_Mechanics/player/ball/ball.tscn" id="2_hgo3r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hgo3r"]
 size = Vector3(20, 2, 20)
