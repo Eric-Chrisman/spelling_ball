@@ -1,0 +1,204 @@
+[gd_scene load_steps=9 format=3 uid="uid://bctcuhhypyv5a"]
+
+[ext_resource type="Script" uid="uid://b7n7k5vrsva11" path="res://Database_Words/user_problem_set_editor/user_problem_set_editor.gd" id="1_38f4o"]
+[ext_resource type="PackedScene" uid="uid://dru2kq3ymp81e" path="res://Database_Words/user_word_editor/user_word_editor_ui.tscn" id="2_2ppuc"]
+[ext_resource type="PackedScene" uid="uid://bsptirrj86788" path="res://Database_Words/user_problem_set_editor/word_container.tscn" id="2_ddn77"]
+[ext_resource type="PackedScene" uid="uid://ccoc7t3p4tef6" path="res://Database_Words/user_problem_set_name_editor/user_problem_set_name.tscn" id="3_4xirx"]
+[ext_resource type="Script" uid="uid://gnd0r7gdq6my" path="res://Database_Words/import_export_features/import_export.gd" id="5_n7sk0"]
+[ext_resource type="PackedScene" uid="uid://c40rni4faldlk" path="res://Main/Menu_Auto_Audio/Menu_Auto_Audio.tscn" id="6_7pnb4"]
+[ext_resource type="AudioStream" uid="uid://gcj0k4i3dvby" path="res://Assets/Sound_Effects/player_effects/half life 2 menu.mp3" id="7_t564v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38f4o"]
+bg_color = Color(0, 0.374529, 0.632576, 1)
+
+[node name="UserProblemSetEditorUi" type="Control" node_paths=PackedStringArray("problem_sets_selector", "word_list", "word_editor", "export_button", "delete_button", "word_list_manager", "add_word_button", "problem_set_name_editor")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_38f4o")
+problem_sets_selector = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/OptionButton")
+word_list = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer")
+word_editor = NodePath("UserWordEditorUi")
+export_button = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Export List")
+delete_button = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/delete_list")
+word_list_manager = NodePath("WordListImporterExporter")
+add_word_button = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Add Button")
+problem_set_name_editor = NodePath("UserProblemSetName")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.464)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.5
+offset_top = -149.5
+offset_right = 176.5
+offset_bottom = 149.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_38f4o")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+selected = 0
+allow_reselect = true
+item_count = 1
+popup/item_0/text = "- No Set Selected -"
+popup/item_0/id = 0
+
+[node name="new_problem_set" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Make New Set"
+
+[node name="import_set" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Import List"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
+custom_minimum_size = Vector2(260.31, 500.425)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Edit"
+
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Delete"
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Apple"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Edit"
+
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Delete"
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Apple"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Edit"
+
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Delete"
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Apple"
+
+[node name="HBoxContainer4" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ddn77")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Add Button" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Add Word"
+
+[node name="Export List" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Export List"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 130
+alignment = 1
+
+[node name="close_button" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Exit"
+
+[node name="delete_list" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Delete List"
+
+[node name="UserWordEditorUi" parent="." instance=ExtResource("2_2ppuc")]
+visible = false
+layout_mode = 1
+
+[node name="UserProblemSetName" parent="." instance=ExtResource("3_4xirx")]
+visible = false
+layout_mode = 1
+
+[node name="WordListImporterExporter" type="Node" parent="."]
+script = ExtResource("5_n7sk0")
+metadata/_custom_type_script = "uid://gnd0r7gdq6my"
+
+[node name="MenuAutoAudio" parent="." node_paths=PackedStringArray("connected_buttons") instance=ExtResource("6_7pnb4")]
+stream = ExtResource("7_t564v")
+connected_buttons = [NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/OptionButton"), NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/new_problem_set"), NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/import_set"), NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Add Button"), NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Export List"), NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/close_button"), NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/delete_list")]
+
+[connection signal="item_selected" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/new_problem_set" to="." method="_on_new_problem_set_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/import_set" to="." method="_on_import_set_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Add Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Export List" to="." method="_on_export_list_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/close_button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/delete_list" to="." method="_on_delete_list_pressed"]
+[connection signal="add_word" from="UserWordEditorUi" to="." method="_on_user_word_editor_ui_add_word"]
+[connection signal="menu_closed" from="UserProblemSetName" to="." method="_on_user_problem_set_name_menu_closed"]
+[connection signal="set_created" from="UserProblemSetName" to="." method="_on_user_problem_set_name_set_created"]

@@ -25,7 +25,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24407, 0)
 mesh = SubResource("CapsuleMesh_bg0gr")
 
 [node name="Label3D" type="Label3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.371, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.432321, 0)
+pixel_size = 0.01
 billboard = 1
 text = "S"
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3y4c72nuwsy6"]
+[gd_scene load_steps=6 format=3 uid="uid://bdjxy1kyqoix"]
 
-[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game_Mechanics/Player/ball/ball.tscn" id="1_hi3pd"]
+[ext_resource type="PackedScene" uid="uid://cjsh4hs8xf2bu" path="res://Game_Mechanics/player/ball/ball.tscn" id="1_hi3pd"]
 [ext_resource type="Texture2D" uid="uid://cn35lmelu7mj1" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Bricks/Bricks_12-256x256.png" id="2_gjsi5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hi3pd"]

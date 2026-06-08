@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bha2hler6mpb1"]
+
+[ext_resource type="Script" uid="uid://cehjh7i78uts7" path="res://Main/Game/color_key.gd" id="1_a8a3o"]
+
+[node name="ColorKey" type="ColorRect"]
+script = ExtResource("1_a8a3o")

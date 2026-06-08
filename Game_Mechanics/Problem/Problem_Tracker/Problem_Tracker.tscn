@@ -1,13 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgj0niop1ggj5"]
+[gd_scene load_steps=2 format=3 uid="uid://bgj0niop1ggj5"]
 
 [ext_resource type="Script" uid="uid://bwtqjcdawxa7a" path="res://Game_Mechanics/Problem/Problem_Tracker/Problem_Tracker.gd" id="1_ckblx"]
-[ext_resource type="Script" uid="uid://cb2tg7pha17vu" path="res://Game_Mechanics/Problem/Problem_Tracker/letter_sound_effects_load.gd" id="2_i7r28"]
 
 [node name="Problem" type="Node"]
 script = ExtResource("1_ckblx")
 metadata/_custom_type_script = "uid://bwtqjcdawxa7a"
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="completed_problem_wait_time" type="Timer" parent="."]
+one_shot = true
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource("2_i7r28")
+[connection signal="timeout" from="completed_problem_wait_time" to="." method="_on_completed_problem_wait_time_timeout"]

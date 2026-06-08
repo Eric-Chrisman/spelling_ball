@@ -1,23 +1,120 @@
-[gd_scene load_steps=12 format=3 uid="uid://bupjwud3hy3v7"]
+[gd_scene load_steps=23 format=3 uid="uid://cjjxpjpn2enq3"]
 
 [ext_resource type="PackedScene" uid="uid://bpepefianf62a" path="res://Game_Mechanics/Rail_System/rail_system.tscn" id="1_b8vfe"]
 [ext_resource type="Script" uid="uid://dxhfs1f0kgn20" path="res://Main/Game/game.gd" id="1_spt6k"]
 [ext_resource type="PackedScene" uid="uid://br4vaypw87pj2" path="res://Game_Mechanics/Pathing/path.tscn" id="3_spt6k"]
-[ext_resource type="Texture2D" uid="uid://dys8u2bvfgtw7" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Wood/Wood_02-256x256.png" id="4_2kjoi"]
 [ext_resource type="PackedScene" uid="uid://e2g3xcr5d5x5" path="res://Game_Mechanics/Problem/Problem_UI/Problem_UI.tscn" id="5_qodx8"]
 [ext_resource type="PackedScene" uid="uid://bgj0niop1ggj5" path="res://Game_Mechanics/Problem/Problem_Tracker/Problem_Tracker.tscn" id="6_ovdhp"]
 [ext_resource type="PackedScene" uid="uid://d1103lpirfarw" path="res://Game_Mechanics/Pickup_Spwaner/Pickup_Spwaner.tscn" id="7_ovdhp"]
 [ext_resource type="PackedScene" uid="uid://d0wvqe7yes32p" path="res://Game_Mechanics/TTS/TTS.tscn" id="8_f7sh8"]
+[ext_resource type="PackedScene" uid="uid://cmfh4wwt6tymk" path="res://Game_Mechanics/Feedback_Sound_Player/Feedback_Sound_Player.tscn" id="9_7r466"]
+[ext_resource type="Texture2D" uid="uid://pjqgbg4fv4nr" path="res://Assets/Textures/keyboard/tilemap.png" id="9_argg4"]
+[ext_resource type="PackedScene" uid="uid://bha2hler6mpb1" path="res://Main/Game/color_key.tscn" id="10_argg4"]
+[ext_resource type="Script" uid="uid://d2vn7nym8n2vm" path="res://Main/Game/clock.gd" id="11_0dbjc"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dpgtf"]
-panorama = ExtResource("4_2kjoi")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r466"]
+atlas = ExtResource("9_argg4")
+region = Rect2(425, 187, 16, 16)
 
-[sub_resource type="Sky" id="Sky_qodx8"]
-sky_material = SubResource("PanoramaSkyMaterial_dpgtf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7exgd"]
+atlas = ExtResource("9_argg4")
+region = Rect2(306, 187, 16, 16)
 
-[sub_resource type="Environment" id="Environment_ovdhp"]
-background_mode = 2
-sky = SubResource("Sky_qodx8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lnkv"]
+atlas = ExtResource("9_argg4")
+region = Rect2(340, 187, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do7g4"]
+atlas = ExtResource("9_argg4")
+region = Rect2(306, 170, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dbjc"]
+atlas = ExtResource("9_argg4")
+region = Rect2(527, 102, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_argg4"]
+atlas = ExtResource("9_argg4")
+region = Rect2(544, 102, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3h8e"]
+atlas = ExtResource("9_argg4")
+region = Rect2(561, 102, 16, 16)
+
+[sub_resource type="Animation" id="Animation_kmnsd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../key/MarginContainer/HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kf8jr"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.406126, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../key/MarginContainer/HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h5g1y"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.482968, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qd626"]
+_data = {
+&"RESET": SubResource("Animation_kmnsd"),
+&"fade_in": SubResource("Animation_kf8jr"),
+&"fade_out": SubResource("Animation_h5g1y")
+}
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_spt6k")
@@ -29,19 +126,351 @@ speed = 5.0
 [node name="path" parent="." node_paths=PackedStringArray("problem_tracker", "pickup_spawner") instance=ExtResource("3_spt6k")]
 max_amount_of_blocks = 20
 block_of_focus = 5
-problem_tracker = NodePath("../Problem")
+problem_tracker = NodePath("../Problem_Tracker")
 pickup_spawner = NodePath("../PickupSpwaner")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ovdhp")
-
 [node name="Problem_UI" parent="." instance=ExtResource("5_qodx8")]
+visible = false
 
-[node name="Problem" parent="." node_paths=PackedStringArray("UI", "tts") instance=ExtResource("6_ovdhp")]
+[node name="Problem_Tracker" parent="." node_paths=PackedStringArray("UI", "tts") instance=ExtResource("6_ovdhp")]
 UI = NodePath("../Problem_UI")
 tts = NodePath("../TTS")
 
 [node name="PickupSpwaner" parent="." node_paths=PackedStringArray("problem_tracker") instance=ExtResource("7_ovdhp")]
-problem_tracker = NodePath("../Problem")
+problem_tracker = NodePath("../Problem_Tracker")
 
 [node name="TTS" parent="." instance=ExtResource("8_f7sh8")]
+
+[node name="FeedbackSoundPlayer" parent="." instance=ExtResource("9_7r466")]
+
+[node name="tutorial" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="tutorial"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="tutorial/Control"]
+layout_mode = 0
+offset_left = 734.0
+offset_top = 383.0
+offset_right = 837.0
+offset_bottom = 406.0
+text = "SPEAK WORD"
+
+[node name="Label2" type="Label" parent="tutorial/Control"]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 467.0
+offset_right = 624.0
+offset_bottom = 490.0
+text = "START"
+horizontal_alignment = 1
+
+[node name="TextureRect5" type="TextureRect" parent="tutorial/Control"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 378.0
+offset_right = 552.0
+offset_bottom = 395.0
+scale = Vector2(4.40514, 4.40514)
+texture = SubResource("AtlasTexture_7r466")
+
+[node name="Control" type="Control" parent="tutorial/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect2" type="TextureRect" parent="tutorial/Control/Control"]
+layout_mode = 0
+offset_left = -823.896
+offset_top = 412.104
+offset_right = -807.896
+offset_bottom = 428.104
+scale = Vector2(4.40513, 4.40513)
+texture = SubResource("AtlasTexture_7exgd")
+
+[node name="TextureRect3" type="TextureRect" parent="tutorial/Control/Control"]
+layout_mode = 0
+offset_left = -634.896
+offset_top = 412.104
+offset_right = -618.896
+offset_bottom = 428.104
+scale = Vector2(4.40514, 4.40514)
+texture = SubResource("AtlasTexture_2lnkv")
+
+[node name="TextureRect4" type="TextureRect" parent="tutorial/Control/Control"]
+layout_mode = 0
+offset_left = -730.896
+offset_top = 238.104
+offset_right = -714.896
+offset_bottom = 254.104
+scale = Vector2(4.40514, 4.40514)
+texture = SubResource("AtlasTexture_do7g4")
+
+[node name="Polygon2D2" type="Polygon2D" parent="tutorial/Control/Control"]
+position = Vector2(-610.896, 367.104)
+rotation = 3.14159
+scale = Vector2(1.39472, 1.39472)
+polygon = PackedVector2Array(-1.52588e-05, -16, -56, 8, -6.47461e-07, 32, -6.47461e-07, 16, 56, 8, 56, 8, -1.52588e-05, 0)
+uv = PackedVector2Array(-136, -32, -192, -8, -136, 8, -136, -8, -80, -8, -80, -16, -136, -16)
+
+[node name="Polygon2D4" type="Polygon2D" parent="tutorial/Control/Control"]
+position = Vector2(-687.896, 155.104)
+rotation = 1.57079
+scale = Vector2(1.39472, 1.39472)
+polygon = PackedVector2Array(-1.52588e-05, -16, -56, 8, -6.47461e-07, 32, -6.47461e-07, 16, 56, 8, 56, 8, -1.52588e-05, 0)
+uv = PackedVector2Array(-136, -32, -192, -8, -136, 8, -136, -8, -80, -8, -80, -16, -136, -16)
+
+[node name="Polygon2D3" type="Polygon2D" parent="tutorial/Control/Control"]
+position = Vector2(-784.896, 345.104)
+scale = Vector2(1.39472, 1.39472)
+polygon = PackedVector2Array(-1.52588e-05, -16, -30.4403, -2.95419, -56, 8, -6.47461e-07, 32, -6.47461e-07, 16, 56, 8, 56, 8, -1.52588e-05, 0)
+uv = PackedVector2Array(-136, -32, -192, -8, -136, 8, -136, -8, -80, -8, -80, -16, -136, -16)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="tutorial/Control"]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 416.0
+offset_right = 715.0
+offset_bottom = 432.0
+scale = Vector2(4.33725, 4.33725)
+theme_override_constants/separation = -1
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="tutorial/Control/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_0dbjc")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="tutorial/Control/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_argg4")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="tutorial/Control/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_h3h8e")
+stretch_mode = 2
+
+[node name="Timer" type="Timer" parent="tutorial"]
+wait_time = 5.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="tutorial"]
+libraries = {
+&"": SubResource("AnimationLibrary_qd626")
+}
+
+[node name="key" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="key"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -642.5
+offset_right = 642.5
+offset_bottom = 127.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="key/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="key/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ColorKey" parent="key/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_argg4")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+syllable_type = 1
+
+[node name="Label" type="Label" parent="key/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "OPEN"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="key/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ColorKey2" parent="key/MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("10_argg4")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+syllable_type = 2
+
+[node name="Label" type="Label" parent="key/MarginContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "CLOSED"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="key/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ColorKey3" parent="key/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("10_argg4")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+syllable_type = 3
+
+[node name="Label" type="Label" parent="key/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "VOWEL TEAM"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="key/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ColorKey4" parent="key/MarginContainer/HBoxContainer/VBoxContainer4" instance=ExtResource("10_argg4")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+syllable_type = 4
+
+[node name="Label" type="Label" parent="key/MarginContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "R CONTROLLED"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="key/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ColorKey5" parent="key/MarginContainer/HBoxContainer/VBoxContainer5" instance=ExtResource("10_argg4")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+syllable_type = 5
+
+[node name="Label" type="Label" parent="key/MarginContainer/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "DIPHTONG"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="key/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ColorKey6" parent="key/MarginContainer/HBoxContainer/VBoxContainer6" instance=ExtResource("10_argg4")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+syllable_type = 6
+
+[node name="Label" type="Label" parent="key/MarginContainer/HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "LE"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="key/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ColorKey7" parent="key/MarginContainer/HBoxContainer/VBoxContainer7" instance=ExtResource("10_argg4")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+syllable_type = 7
+
+[node name="Label" type="Label" parent="key/MarginContainer/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "MAGIC E"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="temp" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="temp" node_paths=PackedStringArray("word_ui", "clock_ui")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_0dbjc")
+word_ui = NodePath("GridContainer/word")
+clock_ui = NodePath("GridContainer/clock")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="temp/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="temp/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="temp/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="temp/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Words Completed:"
+
+[node name="word" type="Label" parent="temp/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "asdf"
+
+[node name="Label2" type="Label" parent="temp/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Time:"
+
+[node name="clock" type="Label" parent="temp/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "clock"
+
+[connection signal="correct_letter_hit" from="Problem_Tracker" to="FeedbackSoundPlayer" method="correct_buzzer"]
+[connection signal="problem_solved" from="Problem_Tracker" to="path" method="clear_pickups_on_problem_solved"]
+[connection signal="problem_solved" from="Problem_Tracker" to="temp/VBoxContainer" method="_on_problem_tracker_problem_solved"]
+[connection signal="wrong_letter_hit" from="Problem_Tracker" to="FeedbackSoundPlayer" method="incorrect_buzzer"]
+[connection signal="timeout" from="tutorial/Timer" to="." method="_on_timer_timeout"]

@@ -14,7 +14,9 @@ var current_block_index: int = 0
 
 const SPAWN_DELAY_BLOCKS: int = 3
 const LETTER_ASSIGN_RANGE: int = 1 
-const CLEAR_RANGE: int = 3
+const CLEAR_RANGE: int = 2
+
+var letters_enabled: bool = false
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -43,9 +45,9 @@ func increment_block() -> Block:
 	
 	if assign_index < blocks.size():
 		var block_to_assign = blocks[assign_index]
-		if block_to_assign is Pickup_Block:
+		if block_to_assign is Pickup_Block and letters_enabled: 
 			var pickup_block: Pickup_Block = block_to_assign as Pickup_Block
-			if not pickup_block.has_been_cleared:  # ← NEW: Don't assign to cleared blocks
+			if not pickup_block.has_been_cleared:
 				pickup_spawner.assign_letters_to_block(pickup_block)
 	
 	return get_current_block()
@@ -73,7 +75,7 @@ func _add_block(scene: PackedScene = null) -> void:
 	# Spawn empty pickups (don't spawn on cleared blocks)
 	if blocks.size() > SPAWN_DELAY_BLOCKS and new_block is Pickup_Block:
 		var pickup_block: Pickup_Block = new_block as Pickup_Block
-		if not pickup_block.has_been_cleared:  # ← NEW: Don't spawn on cleared blocks
+		if not pickup_block.has_been_cleared:
 			pickup_spawner.spawn_pickups_for_block(pickup_block)
 	
 	# Remove old blocks if at capacity
@@ -93,3 +95,17 @@ func clear_pickups_on_problem_solved() -> void:
 			if block is Pickup_Block:
 				var pickup_block: Pickup_Block = block as Pickup_Block
 				pickup_block.clear_pickups()
+
+func enable_letter_assignment() -> void:
+	letters_enabled = true
+	
+	# Retroactively assign letters to any in-range blocks that were skipped
+	var focus_index = current_block_index
+	for i in range(LETTER_ASSIGN_RANGE + 1):
+		var check_index = focus_index + i
+		if check_index < blocks.size():
+			var block = blocks[check_index]
+			if block is Pickup_Block:
+				var pickup_block: Pickup_Block = block as Pickup_Block
+				if not pickup_block.has_been_cleared:
+					pickup_spawner.assign_letters_to_block(pickup_block)
