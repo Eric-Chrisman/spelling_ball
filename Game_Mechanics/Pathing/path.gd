@@ -1,14 +1,14 @@
 extends Node3D
 class_name Path
+
 @export var max_amount_of_blocks: int = 5
 @export var block_of_focus: int = 3
 @export var problem_tracker: Problem_Tracker
-@export var pickup_spawner: Pickup_Spwaner
+@export var pickup_spawner: Pickup_Spawner
 
-var sample_path: PackedScene = preload("res://Assets/Blocks/Test_blocks/strait_block.tscn")
-var left_turn_path: PackedScene = preload("res://Assets/Blocks/Test_blocks/left_curve_block.tscn")
-var sample_start_path: PackedScene = preload("res://Assets/Blocks/Test_blocks/start_block.tscn")
-var path_choices = [left_turn_path, sample_path]
+var sample_path: PackedScene = preload("uid://chxpgb803pbj1")
+var sample_start_path: PackedScene = preload("uid://donv80bnd6ag4")
+var path_choices = [sample_path]
 var blocks: Array[Block] = []
 var current_block_index: int = 0
 
@@ -53,7 +53,7 @@ func increment_block() -> Block:
 	return get_current_block()
 
 func pick_random_path() -> PackedScene:
-	return path_choices[randi_range(1, path_choices.size() - 1)]
+	return path_choices[0]
 
 func _add_block(scene: PackedScene = null) -> void:
 	if !scene:

@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1103lpirfarw"]
-
-[ext_resource type="Script" uid="uid://bdvlvo1i66ilm" path="res://Game_Mechanics/Pickup_Spwaner/Pickup_Spwaner.gd" id="1_iyibw"]
-
-[node name="PickupSpwaner" type="Node"]
-script = ExtResource("1_iyibw")
-metadata/_custom_type_script = "uid://bdvlvo1i66ilm"

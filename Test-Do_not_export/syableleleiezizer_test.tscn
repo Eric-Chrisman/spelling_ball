@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxefqffbex8ke"]
-
-[ext_resource type="Script" uid="uid://baxji52gu85w" path="res://Test-Do_not_export/syableleleiezizer_test.gd" id="1_oqrmi"]
-
-[node name="SyableleleiezizerTest" type="Node2D"]
-script = ExtResource("1_oqrmi")

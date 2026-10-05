@@ -22,8 +22,8 @@ general/text_to_speech=true
 [autoload]
 
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
-DbManager="*res://Database_Words/DB_manager/DB_manager.gd"
-SyllableColorConst="*res://Assets/Syllable_Color_Const/Syllable_Color_Const.gd"
+DbManager="*res://database_tools/DB_manager/DB_manager.gd"
+SyllableColorConst="*res://assets/syllable_colors/syllable_color_const.gd"
 
 [display]
 
@@ -40,13 +40,12 @@ enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/go
 [file_customization]
 
 folder_colors={
-"res://Assets/": "green",
-"res://Database_Words/": "gray",
-"res://Game_Mechanics/": "purple",
 "res://Main/": "orange",
 "res://ReadMe/": "gray",
-"res://Test-Do_not_export/": "gray",
-"res://addons/": "gray"
+"res://addons/": "gray",
+"res://assets/": "green",
+"res://database_tools/": "pink",
+"res://game_mechanics/": "purple"
 }
 
 [input]

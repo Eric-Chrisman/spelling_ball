@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://p8tra78t7quq"]
 
 [ext_resource type="Script" uid="uid://yj83wlrjtpk6" path="res://Main/main.gd" id="1_83ytx"]
-[ext_resource type="LabelSettings" uid="uid://b1ssfwdgkpqu8" path="res://Assets/Themes/Title_Font.tres" id="2_amygn"]
+[ext_resource type="LabelSettings" uid="uid://b1ssfwdgkpqu8" path="res://assets/ui_themes/title_font.tres" id="2_amygn"]
 [ext_resource type="Script" uid="uid://d25ht6gi8dbtu" path="res://Main/title_animation.gd" id="3_amygn"]
-[ext_resource type="Texture2D" uid="uid://dys8u2bvfgtw7" path="res://Assets/Textures/Tiny_Texture_Pack_1/256x256/Wood/Wood_02-256x256.png" id="4_ps1la"]
-[ext_resource type="PackedScene" uid="uid://bctcuhhypyv5a" path="res://Database_Words/user_problem_set_editor/user_problem_set_editor_ui.tscn" id="4_u2i7p"]
-[ext_resource type="PackedScene" uid="uid://dlc55fyx57c3h" path="res://Database_Words/user_db_filter_ui/db_settings.tscn" id="5_6aewd"]
+[ext_resource type="Texture2D" uid="uid://dys8u2bvfgtw7" path="res://assets/textures_and_sprites/wood/Wood_02-256x256.png" id="4_ps1la"]
+[ext_resource type="PackedScene" uid="uid://bctcuhhypyv5a" path="res://database_tools/user_problem_set_editor/UserProblemSetEditor.tscn" id="4_u2i7p"]
+[ext_resource type="PackedScene" uid="uid://dlc55fyx57c3h" path="res://database_tools/user_db_filter_ui/DB_Settings.tscn" id="5_6aewd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2i7p"]
 bg_color = Color(1, 1, 1, 1)

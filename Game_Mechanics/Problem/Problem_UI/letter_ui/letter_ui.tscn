@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://foyytvnp6f0n"]
 
-[ext_resource type="Script" uid="uid://c7258rvj1n3ek" path="res://Game_Mechanics/Problem/Problem_UI/letter_ui/letter_ui.gd" id="1_eixu6"]
+[ext_resource type="Script" uid="uid://c7258rvj1n3ek" path="res://game_mechanics/problem/problem_UI/letter_ui/letter_ui.gd" id="1_eixu6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o11yn"]
 font_size = 32

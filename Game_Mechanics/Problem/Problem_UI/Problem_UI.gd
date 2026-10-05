@@ -1,8 +1,8 @@
 extends Control
 class_name Problem_UI
 
-var letter_ui_scene: PackedScene = preload("res://Game_Mechanics/Problem/Problem_UI/letter_ui/letter_ui.tscn")
-var divider_ui_scene: PackedScene = preload("res://Game_Mechanics/Problem/Problem_UI/divider_ui/divider_ui.tscn")
+var letter_ui_scene: PackedScene = preload("uid://foyytvnp6f0n")
+var divider_ui_scene: PackedScene = preload("uid://bh1nuyp48mwq6")
 
 @export var question_location: HBoxContainer 
 

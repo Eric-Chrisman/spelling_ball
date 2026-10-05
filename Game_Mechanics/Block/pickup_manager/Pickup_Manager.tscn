@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8iftg62fbvvl"]
 
-[ext_resource type="Script" uid="uid://cqcd22022shja" path="res://Game_Mechanics/Block/pickup_manager/pickup_manager.gd" id="1_vmpch"]
+[ext_resource type="Script" uid="uid://cqcd22022shja" path="res://game_mechanics/block/pickup_manager/pickup_manager.gd" id="1_vmpch"]
 
 [node name="Pickup_Manager" type="Node3D"]
 script = ExtResource("1_vmpch")
