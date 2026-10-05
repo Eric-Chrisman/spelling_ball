@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b1ssfwdgkpqu8"]
+
+[ext_resource type="FontFile" uid="uid://dpc5c1mo84hmx" path="res://assets/fonts/ARCADECLASSIC.TTF" id="1_68st4"]
+
+[resource]
+font = ExtResource("1_68st4")
+font_size = 86
+font_color = Color(0.876716, 0.504006, 0.0611979, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10611
+shadow_color = Color(1, 1, 0, 1)
+shadow_offset = Vector2(-19.64, 9.07)

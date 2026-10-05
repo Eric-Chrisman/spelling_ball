@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d0wvqe7yes32p"]
 
-[ext_resource type="Script" uid="uid://1ad2yp13xn2x" path="res://Game_Mechanics/TTS/TTS.gd" id="1_2ftwf"]
+[ext_resource type="Script" uid="uid://1ad2yp13xn2x" path="res://game_mechanics/TTS/TTS.gd" id="1_2ftwf"]
 
 [node name="TTS" type="Node3D"]
 script = ExtResource("1_2ftwf")

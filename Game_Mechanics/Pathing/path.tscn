@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://br4vaypw87pj2"]
 
-[ext_resource type="Script" uid="uid://of0uiop5vmhr" path="res://Game_Mechanics/Pathing/path.gd" id="1_amfiv"]
+[ext_resource type="Script" uid="uid://of0uiop5vmhr" path="res://game_mechanics/pathing/path.gd" id="1_amfiv"]
 
 [node name="path" type="Node3D"]
 script = ExtResource("1_amfiv")

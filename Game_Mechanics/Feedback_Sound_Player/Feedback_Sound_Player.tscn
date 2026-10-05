@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmfh4wwt6tymk"]
 
-[ext_resource type="Script" uid="uid://bgo1ops46euh4" path="res://Game_Mechanics/Feedback_Sound_Player/feedback_sound_player.gd" id="1_2pn8o"]
-[ext_resource type="AudioStream" uid="uid://usxu38cxr2gp" path="res://Assets/Sound_Effects/bilps_and_boops/dragon-studio-ding-sfx-472366.mp3" id="2_i7geq"]
-[ext_resource type="AudioStream" uid="uid://bqsrcuopkeo5v" path="res://Assets/Sound_Effects/bilps_and_boops/lesiakower-error-mistake-sound-effect-incorrect-answer-437420.mp3" id="3_118cb"]
+[ext_resource type="Script" uid="uid://bgo1ops46euh4" path="res://game_mechanics/feedback_sound_player/feedback_sound_player.gd" id="1_2pn8o"]
+[ext_resource type="AudioStream" uid="uid://usxu38cxr2gp" path="res://assets/SFX/dragon-studio-ding-sfx-472366.mp3" id="2_i7geq"]
+[ext_resource type="AudioStream" uid="uid://bqsrcuopkeo5v" path="res://assets/SFX/lesiakower-error-mistake-sound-effect-incorrect-answer-437420.mp3" id="3_118cb"]
 
 [node name="FeedbackSoundPlayer" type="Node3D"]
 script = ExtResource("1_2pn8o")

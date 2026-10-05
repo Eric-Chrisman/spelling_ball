@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ct2i5blecfk82"]
 
-[ext_resource type="Script" uid="uid://poevlp4ywslk" path="res://Game_Mechanics/Block/Block_Pickups/base_block_pickups.gd" id="1_86mlm"]
-[ext_resource type="PackedScene" uid="uid://b8iftg62fbvvl" path="res://Game_Mechanics/Block/pickup_manager/Pickup_Manager.tscn" id="2_uvbsf"]
+[ext_resource type="Script" uid="uid://poevlp4ywslk" path="res://game_mechanics/block/Block_Pickups/base_block_pickups.gd" id="1_86mlm"]
+[ext_resource type="PackedScene" uid="uid://b8iftg62fbvvl" path="res://game_mechanics/block/pickup_manager/Pickup_Manager.tscn" id="2_uvbsf"]
 
 [node name="Base_Block_Pickups" type="Node3D" node_paths=PackedStringArray("pickup_manager")]
 script = ExtResource("1_86mlm")

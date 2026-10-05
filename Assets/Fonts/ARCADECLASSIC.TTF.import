@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dpc5c1mo84hmx"
-path="res://.godot/imported/ARCADECLASSIC.TTF-d47c5a34a766b3d23f4690fb1304dd01.fontdata"
+path="res://.godot/imported/ARCADECLASSIC.TTF-d3d36b55fa7b5c3e035f0e4fcc976cb7.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/ARCADECLASSIC.TTF"
-dest_files=["res://.godot/imported/ARCADECLASSIC.TTF-d47c5a34a766b3d23f4690fb1304dd01.fontdata"]
+source_file="res://assets/fonts/ARCADECLASSIC.TTF"
+dest_files=["res://.godot/imported/ARCADECLASSIC.TTF-d3d36b55fa7b5c3e035f0e4fcc976cb7.fontdata"]
 
 [params]
 

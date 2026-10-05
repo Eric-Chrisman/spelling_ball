@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsptirrj86788"]
+
+[ext_resource type="Script" uid="uid://hnthgu83biet" path="res://database_tools/user_problem_set_editor/word_container.gd" id="1_mi211"]
+
+[node name="word_container" type="HBoxContainer"]
+script = ExtResource("1_mi211")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 2
+text = "Edit"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 2
+text = "Delete"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Apple"
+
+[connection signal="pressed" from="Button2" to="." method="_on_delete_button"]
