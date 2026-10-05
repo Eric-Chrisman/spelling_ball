@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dru2kq3ymp81e"]
+[gd_scene load_steps=4 format=3 uid="uid://dru2kq3ymp81e"]
 
 [ext_resource type="Script" uid="uid://bxlys040p3ts7" path="res://database_tools/user_word_editor/user_word_editor.gd" id="1_q3my5"]
 [ext_resource type="Script" uid="uid://cpqdjj3cutre4" path="res://database_tools/user_word_editor/text_edit_word_filter.gd" id="2_lyp2e"]
@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q3my5")
 where_to_add_sample_text_labels = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2")
-text_input = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/LineEdit")
+text_input = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/TextEdit")
 add_button = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/Button2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -58,11 +58,15 @@ layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(322.325, 0)
+[node name="TextEdit" type="TextEdit" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300.34, 35.2)
 layout_mode = 2
+size_flags_horizontal = 4
 placeholder_text = "- Enter Word Here -"
-alignment = 1
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+scroll_fit_content_height = true
+script = ExtResource("2_lyp2e")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -88,11 +92,6 @@ layout_mode = 2
 disabled = true
 text = "Add"
 
-[node name="MenuAutoAudio" parent="." node_paths=PackedStringArray("connected_buttons") instance=ExtResource("3_q3my5")]
-stream = ExtResource("4_lyp2e")
-connected_buttons = [NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/Button"), NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/Button2")]
-
-[connection signal="text_changed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
-[connection signal="text_submitted" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_changed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/TextEdit" to="." method="reset_sample_labels"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer3/Button2" to="." method="_on_button_2_pressed"]

@@ -6,9 +6,6 @@ extends Control
 @export var export_button: Button
 @export var delete_button: Button
 @export var word_list_manager: WordListImporterExporter
-@export var add_word_button: Button
-@export var problem_set_name_editor: Control
-@onready var sound_effect_system: MenuAutoAudio = $MenuAutoAudio
 
 var preloaded_word_ui: PackedScene = preload("uid://bsptirrj86788")
 
@@ -38,14 +35,13 @@ func get_selected_problem_set() -> String:
 	return problem_sets_selector.get_item_text(problem_sets_selector.selected)
 
 func update_export_button() -> void:
-	add_word_button.disabled = get_selected_problem_set() == ""
 	export_button.disabled = get_selected_problem_set() == ""
 	delete_button.disabled = get_selected_problem_set() == ""
 #endregion
 
 #region word list functions
 func _on_button_pressed() -> void:
-	word_editor.prime()
+	word_editor.visible = true
 
 func _on_user_word_editor_ui_add_word(new_word: Word) -> void:
 	DbManager.add_word_to_problem_set(new_word, get_selected_problem_set())
@@ -74,7 +70,6 @@ func load_words() -> void:
 		word_list.add_child(word_ui)
 		word_ui.set_text(word.text)
 		word_ui.delete_button.connect(_on_word_delete_pressed.bind(word))
-		word_ui.delete_button.connect(sound_effect_system.play_audio)
 
 func clear_words() -> void:
 	for child in word_list.get_children():

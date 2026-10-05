@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://p8tra78t7quq"]
+[gd_scene load_steps=20 format=3 uid="uid://p8tra78t7quq"]
 
 [ext_resource type="Script" uid="uid://yj83wlrjtpk6" path="res://Main/main.gd" id="1_83ytx"]
 [ext_resource type="LabelSettings" uid="uid://b1ssfwdgkpqu8" path="res://assets/ui_themes/title_font.tres" id="2_amygn"]
@@ -230,7 +230,6 @@ libraries = {
 }
 
 [node name="veil" type="ColorRect" parent="Main_Menu"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -246,11 +245,6 @@ libraries = {
 
 [node name="UserProblemSetEditorUi" parent="Main_Menu" instance=ExtResource("4_u2i7p")]
 visible = false
-
-[node name="MenuAutoAudio" parent="Main_Menu" node_paths=PackedStringArray("connected_buttons") instance=ExtResource("5_bor5n")]
-stream = ExtResource("5_qg80j")
-max_polyphony = 5
-connected_buttons = [NodePath("../Main_Menu/PanelContainer/MarginContainer/VBoxContainer/Start"), NodePath("../Main_Menu/PanelContainer/MarginContainer/VBoxContainer/Intervetion"), NodePath("../Main_Menu/PanelContainer/MarginContainer/VBoxContainer/Settings"), NodePath("../Main_Menu/PanelContainer/MarginContainer/VBoxContainer/Exit")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u2i7p")

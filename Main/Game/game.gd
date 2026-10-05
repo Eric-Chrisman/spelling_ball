@@ -7,8 +7,6 @@ var game_in_play: bool = false
 func _ready():
 	$tutorial/Control.modulate = Color(1,1,1,0)
 	$key/MarginContainer/HBoxContainer.modulate = Color(1,1,1,0)
-	$Rail_System.prime_player(false)
-	$TTS.tts_disabled = true
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("start") and ready_to_go:
@@ -23,16 +21,12 @@ func _physics_process(delta: float) -> void:
 func prime_game():
 	ready_to_go = true
 	$tutorial/AnimationPlayer.play("fade_in")
-	$Rail_System.prime_player(true)
-	$TTS.tts_disabled = false
 
 func unprime_game():
 	ready_to_go = false
 	$tutorial/AnimationPlayer.stop()
 	$tutorial/Control.modulate = Color(1,1,1,0)
 	$key/MarginContainer.modulate = Color(1,1,1,0)
-	$Rail_System.prime_player(false)
-	$TTS.tts_disabled = true
 
 func _on_timer_timeout() -> void:
 	$tutorial/AnimationPlayer.play("fade_out")
