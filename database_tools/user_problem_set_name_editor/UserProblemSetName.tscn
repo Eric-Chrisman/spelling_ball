@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccoc7t3p4tef6"]
+[gd_scene load_steps=5 format=3 uid="uid://ccoc7t3p4tef6"]
 
 [ext_resource type="Script" uid="uid://bmgua0ddtbe2d" path="res://database_tools/user_problem_set_name_editor/user_problem_set_name.gd" id="1_sfuns"]
 
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sfuns")
-name_input = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/TextEdit")
+name_input = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/LineEdit")
 status_label = NodePath("PanelContainer/MarginContainer/CenterContainer/VBoxContainer/Label")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -53,10 +53,11 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300.34, 35.2)
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(260.3, 0)
 layout_mode = 2
 placeholder_text = "- Enter Problem Set Name Here -"
+max_length = 20
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -64,18 +65,26 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 35
 alignment = 1
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60.83, 0)
 layout_mode = 2
 text = "Back"
 
 [node name="Button2" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60.83, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Ok"
 
-[connection signal="text_changed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[node name="MenuAutoAudio" parent="." node_paths=PackedStringArray("connected_buttons") instance=ExtResource("2_fqtlo")]
+stream = ExtResource("3_3jih8")
+connected_buttons = [NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/Button"), NodePath("../PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/Button2")]
+
+[connection signal="text_changed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/LineEdit" to="." method="_on_name_input_text_changed"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/LineEdit" to="." method="_on_name_input_text_submitted"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_on_create_pressed"]
