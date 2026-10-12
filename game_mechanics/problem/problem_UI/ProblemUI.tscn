@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://e2g3xcr5d5x5"]
 
-[ext_resource type="Script" uid="uid://cuq4qarov6m5y" path="res://game_mechanics/problem/problem_UI/problem_UI.gd" id="1_wmfsn"]
+[ext_resource type="Script" uid="uid://cuq4qarov6m5y" path="res://game_mechanics/problem/problem_UI/Problem_UI.gd" id="1_wmfsn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1x12a"]
 bg_color = Color(0.148, 0.148, 0.148, 0.768)

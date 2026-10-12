@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 		$Rail_System.start()
 		$Problem_Tracker.generate_word()
 		$path.enable_letter_assignment()
-		$temp/VBoxContainer.clock_active = true
+		$WordsCompleted/VBoxContainer.clock_active = true
 
 func prime_game():
 	ready_to_go = true

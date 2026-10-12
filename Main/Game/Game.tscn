@@ -433,44 +433,44 @@ text = "MAGIC E"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="temp" type="CanvasLayer" parent="."]
+[node name="WordsCompleted" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="temp" node_paths=PackedStringArray("word_ui", "clock_ui")]
+[node name="VBoxContainer" type="VBoxContainer" parent="WordsCompleted" node_paths=PackedStringArray("word_ui", "clock_ui")]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("11_0dbjc")
 word_ui = NodePath("GridContainer/word")
 clock_ui = NodePath("GridContainer/clock")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="temp/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="WordsCompleted/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="temp/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="WordsCompleted/VBoxContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="temp/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="WordsCompleted/VBoxContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="temp/VBoxContainer/GridContainer"]
+[node name="Label" type="Label" parent="WordsCompleted/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Words Completed:"
 
-[node name="word" type="Label" parent="temp/VBoxContainer/GridContainer"]
+[node name="word" type="Label" parent="WordsCompleted/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "asdf"
 
-[node name="Label2" type="Label" parent="temp/VBoxContainer/GridContainer"]
+[node name="Label2" type="Label" parent="WordsCompleted/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Time:"
 
-[node name="clock" type="Label" parent="temp/VBoxContainer/GridContainer"]
+[node name="clock" type="Label" parent="WordsCompleted/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "clock"
 
 [connection signal="correct_letter_hit" from="Problem_Tracker" to="FeedbackSoundPlayer" method="correct_buzzer"]
 [connection signal="problem_solved" from="Problem_Tracker" to="path" method="clear_pickups_on_problem_solved"]
-[connection signal="problem_solved" from="Problem_Tracker" to="temp/VBoxContainer" method="_on_problem_tracker_problem_solved"]
+[connection signal="problem_solved" from="Problem_Tracker" to="WordsCompleted/VBoxContainer" method="_on_problem_tracker_problem_solved"]
 [connection signal="wrong_letter_hit" from="Problem_Tracker" to="FeedbackSoundPlayer" method="incorrect_buzzer"]
 [connection signal="timeout" from="tutorial/Timer" to="." method="_on_timer_timeout"]
